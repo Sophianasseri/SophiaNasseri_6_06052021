@@ -5,68 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fisheye - Accueil</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
     <div id="page-container">
       <header>
         <a class="main-link" href="#main-content">Passer au contenu</a>
-        <a href="index.html">
-          <img
-            class="logo"
-            src="images/logo/fisheyelogo.svg"
-            alt="Page d'accueil"
-          />
-        </a>
-        <nav>
-          <a href="" class="tag">#portrait</a>
-          <span></span>
-          <a href="" class="tag">#art</a>
-          <span></span>
-          <a href="" class="tag">#fashion</a>
-          <span></span>
-          <a href="" class="tag">#architecture</a>
-          <span></span>
-          <a href="" class="tag">#travel</a>
-          <span></span>
-          <a href="" class="tag">#sport</a>
-          <span></span>
-          <a href="" class="tag">#animals</a>
-          <span></span>
-          <a href="" class="tag">#events</a>
-          <span></span>
-        </nav>
-        <main>
-          <div id="main-content">
-            <h1>Nos photographes</h1>
-            <div class="photographer-container">
-              <section class="photographer">
-                <a href="mimikeel.html" class="photographer-link">
-                  <img src="images/photographers/MimiKeel.jpg" alt="" />
-                  <h2>Mimi Keel</h2>
-                </a>
-                <div>
-                  <p class="photographer-location">London, UK</p>
-                  <p class="photographer-motto">
-                    Voir le beau dans le quotidien
-                  </p>
-                  <p class="photographer-prize">400€/jour</p>
-                </div>
-                <div class="tags">
-                  <a href="" class="tag">#portrait</a>
-                  <span></span>
-                  <a href="" class="tag">#events</a>
-                  <span></span>
-                  <a href="" class="tag">#travel</a>
-                  <span></span>
-                  <a href="" class="tag">#animals</a>
-                  <span></span>
-                </div>
-              </section>
-            </div>
-          </div>
-        </main>
+        <div class="header-container">
+          <a href="index.html">
+            <img
+              class="logo"
+              src="images/logo/fisheyelogo.svg"
+              alt="Page d'accueil"
+            />
+          </a>
+          <nav>
+            <ul>
+              <li><a href="" class="tag">#portrait</a></li>
+              <span></span>
+              <li><a href="" class="tag">#art</a></li>
+              <span></span>
+              <li><a href="" class="tag">#fashion</a></li>
+              <span></span>
+              <li><a href="" class="tag">#architecture</a></li>
+              <span></span>
+              <li><a href="" class="tag">#travel</a></li>
+              <span></span>
+              <li><a href="" class="tag">#sport</a></li>
+              <span></span>
+              <li><a href="" class="tag">#animals</a></li>
+              <span></span>
+              <li><a href="" class="tag">#events</a></li>
+              <span></span>
+            </ul>
+          </nav>
+        </div>
       </header>
+      <main>
+        <div id="main-content">
+          <h1>Nos photographes</h1>
+          <div class="photographer-container">
+            <!--Profil photographe-->
+            <section class="photographer">
+              <a href="mimikeel.html" class="photographer-link">
+                  <img src="images/photographers/MimiKeel.jpg" alt="" />
+                <h2 class="photographer__name">Mimi Keel</h2>
+              </a>
+              <div>
+                <p class="photographer__location">London, UK</p>
+                <p class="photographer__motto">Voir le beau dans le quotidien</p>
+                <p class="photographer__price">400€/jour</p>
+              </div>
+              <div class="tags">
+                <ul>
+                  <li><a href="" class="tag">#portrait</a></li>
+                  <span></span>
+                  <li><a href="" class="tag">#events</a></li>
+                  <span></span>
+                  <li><a href="" class="tag">#travel</a></li>
+                  <span></span>
+                  <li><a href="" class="tag">#animals</a></li>
+                  <span></span>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="./js/app.js"></script>
