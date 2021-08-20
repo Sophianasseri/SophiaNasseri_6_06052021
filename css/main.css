@@ -18,6 +18,8 @@ li {
 #page-container {
   max-width: 1440px;
   width: 100%;
+  margin: 0 50px;
+  padding: 1.5rem;
 }
 
 body {
@@ -72,6 +74,10 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .photographer {
@@ -86,6 +92,8 @@ ul {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  padding: 1rem;
+  width: 400px;
 }
 
 .photographer img {
