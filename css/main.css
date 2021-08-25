@@ -18,6 +18,7 @@ li {
 #page-container {
   max-width: 1440px;
   width: 100%;
+  position: relative;
 }
 
 body {
@@ -44,10 +45,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1rem;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  padding-left: 100px;
+  margin: 70px 0;
 }
 
 .logo {
@@ -59,10 +58,14 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 0.5rem;
-  margin: 70px;
+  margin: 0 100px;
 }
 
 .main-link {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   display: none;
   font-weight: 700;
   padding: 0.5rem;
@@ -71,6 +74,8 @@ body {
   border-radius: 5px;
   text-align: center;
   color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .main-link:hover, .main-link:focus {
@@ -78,7 +83,11 @@ body {
   color: #000;
 }
 
-h1 {
+.index-main-title {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  padding-right: 100px;
   color: #901c1c;
   font-weight: normal;
 }
@@ -86,8 +95,8 @@ h1 {
 .photographer-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 420px 420px 420px;
-      grid-template-columns: 420px 420px 420px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

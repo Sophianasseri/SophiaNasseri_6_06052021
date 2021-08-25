@@ -3,8 +3,8 @@
 .header-container {
   display: flex;
   align-items: center;
-  padding: 1rem;
-  justify-content: center;
+  padding-left: 100px;
+  margin: 70px 0;
 }
 .logo {
   height: 50px;
@@ -12,9 +12,12 @@
 .tag-list-header {
   display: flex;
   padding: 0.5rem;
-  margin: 70px;
+  margin: 0 100px;
 }
 .main-link {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   display: none;
   font-weight: 700;
   padding: 0.5rem;
@@ -23,13 +26,11 @@
   border-radius: 5px;
   text-align: center;
   color: #fff;
+  transition: 0.5s; 
   &:hover,
   &:focus {
     background: $color-secondary;
     color: #000;
   }
 }
-h1 {
-  color: $color-primary;
-  font-weight: normal;
-}
+

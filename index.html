@@ -15,17 +15,17 @@
   </head>
   <body>
     <div id="page-container">
-      <header>
-        <a class="main-link" href="#main-content">Passer au contenu</a>
+      <a class="main-link" href="#index-main-content">Passer au contenu</a>
+      <header role="banner" aria-label="photographer categories">
         <div class="header-container">
           <a href="index.html">
             <img
               class="logo"
               src="images/logo/fisheyelogo.svg"
-              alt="Page d'accueil"
+              alt="Page d'accueil Fisheye"
             />
           </a>
-          <nav>
+          <nav role="navigation">
             <ul class="tag-list-header">
               <li><a href="" class="tag">#portrait</a></li>
               <span></span>
@@ -45,16 +45,16 @@
               <span></span>
             </ul>
           </nav>
-          <div id="main-content">
-            <h1>Nos photographes</h1>
-        </div>
+        
       </header>
       <main>
+        <div id="index-main-content">
+          <h1 class="index-main-title">Nos photographes</h1>
           <div class="photographer-container">
             <!--Profil photographe-->
             <section class="photographer">
               <a href="mkeel.html" class="photographer-link">
-                  <img src="images/photographers/MimiKeel.jpg" alt="" />
+                <img src="images/photographers/MimiKeel.jpg" alt="" />
                 <h2 class="photographer__name">Mimi Keel</h2>
               </a>
               <div class="photographer__description">
@@ -62,20 +62,20 @@
                 <p class="photographer__motto">Voir le beau dans le quotidien</p>
                 <p class="photographer__price">400€/jour</p>
               </div>
-                <ul>
-                  <li><a href="" class="tag">#portrait</a></li>
-                  <span></span>
-                  <li><a href="" class="tag">#events</a></li>
-                  <span></span>
-                  <li><a href="" class="tag">#travel</a></li>
-                  <span></span>
-                  <li><a href="" class="tag">#animals</a></li>
-                  <span></span>
-                </ul>
+              <ul>
+                <li><a href="" class="tag">#portrait</a></li>
+                <span></span>
+                <li><a href="" class="tag">#events</a></li>
+                <span></span>
+                <li><a href="" class="tag">#travel</a></li>
+                <span></span>
+                <li><a href="" class="tag">#animals</a></li>
+                <span></span>
+              </ul>
             </section>
             <section class="photographer">
               <a href="ewilkens.html" class="photographer-link">
-                  <img src="images/photographers/EllieRoseWilkens.jpg" alt="" />
+                <img src="images/photographers/EllieRoseWilkens.jpg" alt="" />
                 <h2 class="photographer__name">Ellie-Rose Wilkens</h2>
               </a>
               <div class="photographer__description">
@@ -94,7 +94,7 @@
             </section>
             <section class="photographer">
               <a href="tgalindo.html" class="photographer-link">
-                  <img src="images/photographers/TracyGalindo.jpg" alt="" />
+                <img src="images/photographers/TracyGalindo.jpg" alt="" />
                 <h2 class="photographer__name">Tracy Galindo</h2>
               </a>
               <div class="photographer__description">
@@ -115,7 +115,7 @@
             </section>
             <section class="photographer">
               <a href="nbradford.html" class="photographer-link">
-                  <img src="images/photographers/NabeelBradford.jpg" alt="" />
+                <img src="images/photographers/NabeelBradford.jpg" alt="" />
                 <h2 class="photographer__name">Nabeel Bradford</h2>
               </a>
               <div class="photographer__description">
@@ -134,7 +134,7 @@
             </section>
             <section class="photographer">
               <a href="rdubois.html" class="photographer-link">
-                  <img src="images/photographers/RhodeDubois.jpg" alt="" />
+                <img src="images/photographers/RhodeDubois.jpg" alt="" />
                 <h2 class="photographer__name">Rhode Dubois</h2>
               </a>
               <div class="photographer__description">
@@ -157,7 +157,7 @@
             </section>
             <section class="photographer">
               <a href="mnikolic.html" class="photographer-link">
-                  <img src="images/photographers/MarcelNikolic.jpg" alt="" />
+                <img src="images/photographers/MarcelNikolic.jpg" alt="" />
                 <h2 class="photographer__name">Marcel Nikolic</h2>
               </a>
               <div class="photographer__description">
@@ -174,13 +174,14 @@
                 </ul>
               </div>
             </section>
-           
-          
+            
+            
           </div>
         </div>
+      </div>
       </main>
     </div>
-
-    <script src="./js/app.js"></script>
+    
+    <script src="./js/index.js"></script>
   </body>
 </html>

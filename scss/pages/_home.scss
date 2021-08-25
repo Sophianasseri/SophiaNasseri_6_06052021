@@ -1,9 +1,18 @@
 @import "../utils/variables";
 
 
+.index-main-title {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  padding-right: 100px;
+  color: $color-primary;
+  font-weight: normal;
+}
+
 .photographer-container {
   display: grid;
-  grid-template-columns: 420px 420px 420px;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   justify-items: center;
   margin-top: 20px;
