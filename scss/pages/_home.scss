@@ -1,14 +1,24 @@
 @import "../utils/variables";
+@import "../utils/placeholders";
 
 
 .index-main-title {
   position: absolute;
   right: 20px;
   top: 80px;
-  padding-right: 100px;
+  margin-right: 100px;
   color: $color-primary;
   font-weight: normal;
+  @include breakpoint-lg {
+    font-size: 1.5rem
+  }
+  @include breakpoint-sm {
+    font-size: 1rem;
+    margin-right: 10px;
+    top: 35px
+  }
 }
+
 
 .photographer-container {
   display: grid;
@@ -17,18 +27,27 @@
   justify-items: center;
   margin-top: 20px;
   padding: 1rem;
+  @include breakpoint-xl{
+    grid-template-columns: 1fr 1fr
+  }
+  @include breakpoint-md {
+    grid-template-columns: 1fr
+  }
 }
 .photographer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @extend %flex-center;
   text-align: center;
+  flex-direction: column;
   margin: 50px 0;
+  width: 100%;
   img {
     width: 250px;
     height: 250px;
     object-fit: cover;
     border-radius: 50%;
+  }
+  @include breakpoint-md {
+    margin: 20px 0;
   }
   ul {
     display: flex;

@@ -1,18 +1,61 @@
 @import "../utils/variables";
+@import "../utils/mixins";
 @import "../components/tags";
 .header-container {
   display: flex;
   align-items: center;
-  padding-left: 100px;
-  margin: 70px 0;
+  margin: 70px 100px 20px 100px;
+  @include breakpoint-md {
+    margin : 20px 0;
+  }
+  nav {
+    @include breakpoint-xxl {
+      width: 100%;
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+  }
 }
 .logo {
   height: 50px;
+  @include breakpoint-xxl {
+    position: absolute;
+    top: 70px;
+  }
+  @include breakpoint-lg {
+    height: 40px;
+    top: 75px;
+  }
+  @include breakpoint-md {
+    margin-left: 100px;
+  }
+  @include breakpoint-sm {
+  margin-left: 20px;
+  height: 30px;
+  top: 30px
+  }
 }
 .tag-list-header {
   display: flex;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   margin: 0 100px;
+  @include breakpoint-xxl {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  @include breakpoint-sm {
+    flex-wrap: wrap;
+    margin: 0;
+    justify-content: center;
+  }
+  li {
+    @include breakpoint-sm {
+      margin: 5px 0;
+    }
+  }
 }
 .main-link {
   position: fixed;
