@@ -36,6 +36,14 @@ body {
   border-radius: 20px;
   margin: 0 2px;
   font-size: 12px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.tag:hover {
+  background: #901c1c;
+  color: #ffff;
+  border: #901c1c 1px solid;
 }
 
 .header-container {
