@@ -9,6 +9,47 @@ window.addEventListener("scroll", () => {
   }
 });
 
+let photographerData = [];
+
+const fetchPhotographer = async () => {
+  await fetch("./js/data.json")
+    .then((res) => res.json())
+    .then((data) => (photographerData = data.photographers));
+};
+
+const photographerDisplay = async () => {
+  await fetchPhotographer();
+  document.querySelector(".photographer-container").innerHTML = photographerData
+    .map((photographer) => {
+      let tags;
+      for (let i = 0; i < 4; i++) {
+        tags = photographer[`tags${i}`];
+      }
+
+      return `
+        <section class="photographer">
+          <a href="./photographer.html?${photographer.id}" class="photographer-link">
+            <img src="images/photographers/${photographer.portrait}" alt="" />
+            <h2 class="photographer__name">${photographer.name}</h2>
+          </a>
+          <div class="photographer__description">
+            <p class="photographer__location">${photographer.city}, ${photographer.country}</p>
+            <p class="photographer__motto">${photographer.tagline}</p>
+           <p class="photographer__price">${photographer.price}€/jour</p>
+          </div>
+          <ul>
+            <li><a href="#" class="tag">#${tags}</a></li>
+            <span></span>
+         </ul>
+      </section>
+
+        `;
+    })
+    .join("");
+};
+
+photographerDisplay();
+
 //Tags
 
 const photographerId = document.querySelectorAll(".photographer");
