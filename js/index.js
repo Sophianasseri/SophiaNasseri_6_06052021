@@ -72,6 +72,7 @@ const tagFilter = async () => {
   tagEl.forEach((tags) => {
     tags.addEventListener("click", (e) => {
       e.target.dataset.tag;
+
       const photographerEl = document.querySelectorAll(".photographer");
       photographerEl.forEach((photographer) => {
         const photographerTags = Array.from(
