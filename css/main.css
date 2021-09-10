@@ -59,12 +59,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 70px 100px 20px 100px;
+  margin: 30px 100px 20px 100px;
 }
 
 @media screen and (max-width: 768px) {
   .header-container {
-    margin: 20px 0;
+    margin: 30px 0 0 0;
   }
 }
 
@@ -88,14 +88,13 @@ body {
 @media screen and (max-width: 1400px) {
   .logo {
     position: absolute;
-    top: 70px;
+    top: 35px;
   }
 }
 
 @media screen and (max-width: 992px) {
   .logo {
     height: 40px;
-    top: 75px;
   }
 }
 
@@ -109,7 +108,6 @@ body {
   .logo {
     margin-left: 20px;
     height: 30px;
-    top: 30px;
   }
 }
 
@@ -124,7 +122,7 @@ body {
 @media screen and (max-width: 1400px) {
   .tag-list-header {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -188,7 +186,7 @@ body {
 .index-main-title {
   position: absolute;
   right: 20px;
-  top: 80px;
+  top: 37px;
   margin-right: 100px;
   color: #901c1c;
   font-weight: normal;
@@ -274,6 +272,53 @@ body {
   color: #757575;
 }
 
+.photographer-banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 100px;
+  padding: 3rem 2.5rem;
+  background: #fafafa;
+  border-radius: 5px;
+}
+
+.photographer-banner__name {
+  font-size: 50px;
+}
+
+.photographer-banner__location {
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.photographer-banner__tagline {
+  color: #525252;
+  margin: 1rem 0;
+}
+
+.photographer-banner ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.photographer-banner img {
+  height: 200px;
+  width: 200px;
+  margin-left: auto;
+}
+
+.modal-btn {
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  margin-left: 80px;
+  margin-top: 20px;
+}
+
 .profile-image {
   -o-object-fit: cover;
      object-fit: cover;
@@ -282,9 +327,28 @@ body {
 
 .profile-name {
   color: #d3573c;
+  font-weight: normal;
 }
 
 .profile-location {
   color: #901c1c;
+}
+
+.btn {
+  background: #901c1c;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 17px;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn:hover, .btn:focus {
+  background: #d3573c;
+  color: #000;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

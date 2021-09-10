@@ -111,17 +111,17 @@ const photographerBannerDisplay = async () => {
     getPhotographerId.name
   }</h1>
   <div>
-      <p class="photgrapher-banner__location profile-location">${
+      <p class="photographer-banner__location profile-location">${
         getPhotographerId.city
       }, ${getPhotographerId.country}</p>
-      <p class="photgrapher-banner__tagline">${getPhotographerId.tagline}</p>
+      <p class="photographer-banner__tagline">${getPhotographerId.tagline}</p>
   </div>
    <ul>
        <li><a href="#" class="tags" data-tags=""></a>${tags.join("")}</li>
        <span></span>
    </ul>
  </div>
- <button class="modal-btn">Contactez-moi</button>
+ <button class="modal-btn btn">Contactez-moi</button>
  <img src="images/photographers/${
    getPhotographerId.portrait
  }" class="profile-image" alt="">

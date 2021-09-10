@@ -1,0 +1,38 @@
+.photographer-banner {
+  display: flex;
+  align-items: center;
+  margin: 0 100px;
+  padding: 3rem 2.5rem;
+  background: $bg;
+  border-radius: 5px;
+
+  &__name {
+ font-size: 50px;
+  }
+  &__location {
+      font-size: 20px;
+      margin-top: 5px;
+  }
+  &__tagline {
+      color: $color-tertiary;
+      margin: 1rem 0;
+  }
+  ul {
+    display: flex;
+  }
+  img {
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+  }
+
+}
+
+.modal-btn {
+    align-self: start;
+    margin-left: 80px;
+    margin-top: 20px;
+}
+
+
+

@@ -1,0 +1,15 @@
+.btn {
+  background: $color-primary;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 17px;
+  border: none;
+  transition: 0.3s;
+  &:hover, &:focus {
+    background: $color-secondary;
+    color: #000;
+    cursor: pointer;
+  }
+}
