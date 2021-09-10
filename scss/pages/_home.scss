@@ -1,7 +1,6 @@
 @import "../utils/variables";
 @import "../utils/placeholders";
 
-
 .index-main-title {
   position: absolute;
   right: 20px;
@@ -10,15 +9,14 @@
   color: $color-primary;
   font-weight: normal;
   @include breakpoint-lg {
-    font-size: 1.5rem
+    font-size: 1.5rem;
   }
   @include breakpoint-sm {
     font-size: 1rem;
     margin-right: 10px;
-    top: 35px
+    top: 35px;
   }
 }
-
 
 .photographer-container {
   display: grid;
@@ -27,11 +25,11 @@
   justify-items: center;
   margin-top: 20px;
   padding: 1rem;
-  @include breakpoint-xl{
-    grid-template-columns: 1fr 1fr
+  @include breakpoint-xl {
+    grid-template-columns: 1fr 1fr;
   }
   @include breakpoint-md {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
   }
 }
 .photographer {
@@ -43,8 +41,6 @@
   img {
     width: 250px;
     height: 250px;
-    object-fit: cover;
-    border-radius: 50%;
   }
   @include breakpoint-md {
     margin: 20px 0;
@@ -56,14 +52,9 @@
     padding: 0.5rem;
   }
   &__name {
-    color: $color-secondary;
     font-size: 28px;
-  }
-  &__location {
-    color: $color-primary;
   }
   &__price {
     color: #757575;
   }
 }
-

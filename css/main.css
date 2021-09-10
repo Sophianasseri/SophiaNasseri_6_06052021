@@ -40,7 +40,13 @@ body {
   transition: 0.3s;
 }
 
-.tag:hover {
+.tag:focus, .tag:hover {
+  background: #901c1c;
+  color: #ffff;
+  border: #901c1c 1px solid;
+}
+
+.style {
   background: #901c1c;
   color: #ffff;
   border: #901c1c 1px solid;
@@ -242,9 +248,6 @@ body {
 .photographer img {
   width: 250px;
   height: 250px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 50%;
 }
 
 @media screen and (max-width: 768px) {
@@ -264,15 +267,24 @@ body {
 }
 
 .photographer__name {
-  color: #d3573c;
   font-size: 28px;
-}
-
-.photographer__location {
-  color: #901c1c;
 }
 
 .photographer__price {
   color: #757575;
+}
+
+.profile-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-name {
+  color: #d3573c;
+}
+
+.profile-location {
+  color: #901c1c;
 }
 /*# sourceMappingURL=main.css.map */
