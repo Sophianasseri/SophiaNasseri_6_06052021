@@ -54,7 +54,7 @@ const mediaDisplay = async () => {
     (element) => element.photographerId == getUrlId
   );
 
-  document.querySelector(".photographer-media").innerHTML = factory(mediaData);
+  document.querySelector(".photographer-media").innerHTML = "";
 };
 
 mediaDisplay();
