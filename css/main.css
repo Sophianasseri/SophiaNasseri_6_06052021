@@ -319,6 +319,11 @@ body {
   margin-top: 20px;
 }
 
+.media-display__thumb {
+  height: 200px;
+  width: 200px;
+}
+
 .profile-image {
   -o-object-fit: cover;
      object-fit: cover;
