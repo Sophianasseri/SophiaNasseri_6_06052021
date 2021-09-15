@@ -1,3 +1,4 @@
+import { fetchPhotographer } from "./functions.js";
 //Bouton passer au contenu
 const mainLink = document.querySelector(".main-link");
 
@@ -9,16 +10,10 @@ window.addEventListener("scroll", () => {
   }
 });
 
-export let photographerData = [];
-
-export const fetchPhotographer = async () => {
-  await fetch("./js/data.json")
-    .then((res) => res.json())
-    .then((data) => (photographerData = data.photographers));
-};
+let photographerData = [];
 
 const photographerDisplay = async () => {
-  await fetchPhotographer();
+  photographerData = await fetchPhotographer();
   document.querySelector(".photographer-container").innerHTML = photographerData
     .map((photographer) => {
       let tags = [];

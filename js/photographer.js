@@ -1,9 +1,10 @@
-import { photographerData, fetchPhotographer } from "./index.js";
-import { factory } from "./mediaDisplay.js";
+import { fetchPhotographer, fetchMedia, factory } from "./functions.js";
 
 const getUrlId = new URLSearchParams(location.search).get("id");
+
+let photographerData = [];
 const photographerBannerDisplay = async () => {
-  await fetchPhotographer();
+  photographerData = await fetchPhotographer();
 
   const getPhotographerId = photographerData.find(
     (element) => element.id == getUrlId
@@ -42,19 +43,17 @@ photographerBannerDisplay();
 
 let mediaData = [];
 
-const fetchMedia = async () => {
-  await fetch("./js/data.json")
-    .then((res) => res.json())
-    .then((data) => (mediaData = data.media));
-};
-
-const mediaDisplay = async () => {
-  await fetchMedia();
-  const getMediaId = mediaData.find(
-    (element) => element.photographerId == getUrlId
+const mediaDisplay = async (PhotographerId) => {
+  mediaData = await fetchMedia();
+  return mediaData.filter(
+    (element) => element.photographerId === PhotographerId
   );
-
-  document.querySelector(".photographer-media").innerHTML = "";
 };
 
-mediaDisplay();
+mediaDisplay(243).then((medias) => {
+  const mediaContainer = document.querySelector(".photographer-media");
+  medias.forEach((element) => {
+    let media = factory(element);
+    mediaContainer.innerHTML += media.displayList();
+  });
+});
