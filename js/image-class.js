@@ -9,9 +9,9 @@ export class ImageMedia {
   }
   displayList() {
     return `
-        <div class="media-display">
-        <img src="images/media/${this.image}" alt="" class="media-display__thumb"></img>
-          <div class="media-display__info">
+        <div class="media-element">
+        <img src="images/media/${this.image}" alt="" class="media-element__thumb"></img>
+          <div class="media-element__info">
         <p>${this.title}</p>
         <p>${this.likes}</p>
         <i></i>

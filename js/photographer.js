@@ -51,7 +51,7 @@ const mediaDisplay = async (PhotographerId) => {
 };
 
 mediaDisplay(243).then((medias) => {
-  const mediaContainer = document.querySelector(".photographer-media");
+  const mediaContainer = document.querySelector(".media-display");
   medias.forEach((element) => {
     let media = factory(element);
     mediaContainer.innerHTML += media.displayList();

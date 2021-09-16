@@ -7,9 +7,14 @@
   font-size: 17px;
   border: none;
   transition: 0.3s;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: $color-secondary;
     color: #000;
     cursor: pointer;
   }
+}
+.dropdown {
+  position: relative;
+  cursor: pointer;
 }

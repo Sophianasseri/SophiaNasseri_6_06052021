@@ -9,9 +9,9 @@ export class VideoMedia {
   }
   displayList() {
     return `
-          <div class="media-display">
-          <video src="images/media/${this.video}" alt="" class="media-display__thumb"></video>
-            <div class="media-display__info">
+          <div class="media-element">
+          <video src="images/media/${this.video}" alt="" class="media-element__thumb"></video>
+            <div class="media-element__info">
           <p>${this.title}</p>
           <p>${this.likes}</p>
           <i></i>

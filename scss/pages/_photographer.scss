@@ -33,9 +33,21 @@
   margin-top: 20px;
 }
 
+.photographer-media {
+  margin: 0 100px;
+}
+
 .media-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 50px;
+}
+
+.media-element {
   &__thumb {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
   }
 }
