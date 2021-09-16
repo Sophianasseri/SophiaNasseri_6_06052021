@@ -17,4 +17,57 @@
 .dropdown {
   position: relative;
   cursor: pointer;
+  &__toggle {
+    background: $color-primary;
+    color: #fff;
+    appearance: none;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    max-width: 200px;
+    padding: 12px 55px 12px 20px;
+    border: 0;
+    &::after {
+      content: "\f078";
+      font-family: "Font Awesome 5 Free";
+      position: absolute;
+      right: 17px;
+      top: calc(50% + 1px);
+      transform: translateY(-50%);
+    }
+  }
+  &__menu {
+    background: $color-primary;
+    padding: 1rem 1rem 0.3rem 1rem;
+    margin: 0;
+    max-width: 158.8px;
+    width: calc(100% + 10px);
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+    position: absolute;
+    left: 80px;
+    top: 80%;
+    transform: translateX(-50%);
+    z-index: 10;
+    border-radius: 0 0 5px 5px;
+    visibility: hidden;
+
+    & li {
+      height: 35px;
+      display: flex;
+      align-items: center;
+      border-top: solid 1px #fff;
+      padding: 1.5rem 0;
+    }
+  }
+}
+
+.dropdown .dropdown__toggle.active::after {
+  content: "\f077";
+  top: calc(50% - 1px);
+}
+
+.dropdown .dropdown__menu[aria-expanded="true"] {
+  visibility: visible;
 }

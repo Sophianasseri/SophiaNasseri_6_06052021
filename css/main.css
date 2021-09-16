@@ -374,69 +374,70 @@ body {
 
 .dropdown {
   position: relative;
+  cursor: pointer;
 }
 
-.dropdown__selected {
+.dropdown__toggle {
+  background: #901c1c;
+  color: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  max-width: 200px;
+  padding: 12px 55px 12px 20px;
+  border: 0;
+}
+
+.dropdown__toggle::after {
+  content: "\f078";
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  right: 17px;
+  top: calc(50% + 1px);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.dropdown__menu {
+  background: #901c1c;
+  padding: 1rem 1rem 0.3rem 1rem;
+  margin: 0;
+  max-width: 158.8px;
+  width: calc(100% + 10px);
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  position: absolute;
+  left: 80px;
+  top: 80%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 10;
+  border-radius: 0 0 5px 5px;
+  visibility: hidden;
+}
+
+.dropdown__menu li {
+  height: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
-  height: 40%;
-  padding: 0 20px 0 10px;
-  border: 1px solid #901c1c;
-  position: relative;
-  cursor: pointer;
+  border-top: solid 1px #fff;
+  padding: 1.5rem 0;
 }
 
-.dropdown__selected::after {
-  top: calc(50% - 2px);
-  right: 10px;
-  border: solid transparent;
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  margin-left: 5px;
+.dropdown .dropdown__toggle.active::after {
+  content: "\f077";
+  top: calc(50% - 1px);
 }
 
-.dropdown__selected:hover {
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown__menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  border: 1px solid #901c1c;
-  border-top: 0;
-  background: #fff;
-  z-index: 5;
-  display: none;
-}
-
-.dropdown__menu-items {
-  max-height: 210px;
-  overflow-y: auto;
-}
-
-.dropdown__menu-item {
-  padding: 10px;
-  border-bottom: 1px solid #901c1c;
-  cursor: pointer;
-}
-
-.dropdown__menu-item.selected {
-  border-bottom: 0;
-}
-
-.dropdown__menu_item.selected,
-.dropdown__menu_item.selected:hover {
-  background-color: #901c1c;
-  color: #fff;
+.dropdown .dropdown__menu[aria-expanded="true"] {
+  visibility: visible;
 }
 /*# sourceMappingURL=main.css.map */

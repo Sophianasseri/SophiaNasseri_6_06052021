@@ -57,3 +57,46 @@ mediaDisplay(243).then((medias) => {
     mediaContainer.innerHTML += media.displayList();
   });
 });
+
+//Dropdown
+
+function dropdownDisplay(dropdownEl) {
+  const [toggler, menu] = dropdownEl.children;
+
+  const setValue = (item) => {
+    const value = item.textContent;
+    toggler.textContent = value;
+    this.toggle(false);
+
+    this.element.dispatchEvent();
+  };
+
+  toggler.addEventListener("click", () => this.toggle());
+
+  [...menu.children].forEach((item) => {
+    item.addEventListener("click", () => setValue(item));
+  });
+
+  this.element = dropdownEl;
+  this.value = toggler.textContent;
+  this.toggle = (expand = null) => {
+    expand =
+      expand === null ? menu.getAttribute("aria-expanded") !== "true" : expand;
+    menu.setAttribute("aria-expanded", expand);
+
+    if (expand) {
+      toggler.classList.add("active");
+    } else {
+      toggler.classList.remove("active");
+    }
+  };
+}
+
+const dropdown = new dropdownDisplay(document.querySelector(".dropdown"));
+
+dropdown.element.addEventListener("change", () => {
+  console.log("change", dropdown.value);
+});
+console.log(dropdown.value);
+
+dropdown.toggle();

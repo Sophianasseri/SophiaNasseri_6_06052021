@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photographe - Fisheye</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,12 +36,19 @@
       <main>
         <section class="photographer-banner"></section>
         <section class="photographer-media">
-          <label for="media-select">Trier par</label>
-          <select name="media" id="media-select" class="media-filter btn">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-          </select>
+          <div class="dropdown">
+            <button
+              class="dropdown__toggle btn"
+              type="button"
+              aria-haspopup="true"
+            >
+              Popularité
+            </button>
+            <ul class="dropdown__menu" role="listbox" aria-expanded="false">
+              <li role="option" tabindex="0">Date</li>
+              <li role="option" tabindex="0">Titre</li>
+            </ul>
+          </div>
           <div class="media-display"></div>
         </section>
       </main>
