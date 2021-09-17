@@ -1,13 +1,13 @@
 import { fetchPhotographer, fetchMedia, factory } from "./functions.js";
 
-const getUrlId = new URLSearchParams(location.search).get("id");
+const pageId = new URLSearchParams(location.search).get("id");
 
 let photographerData = [];
 const photographerBannerDisplay = async () => {
   photographerData = await fetchPhotographer();
 
   const getPhotographerId = photographerData.find(
-    (element) => element.id == getUrlId
+    (element) => element.id == pageId
   );
   let tags = [];
   for (let i = 0; i < getPhotographerId.tags.length; i++) {
@@ -43,20 +43,18 @@ photographerBannerDisplay();
 
 let mediaData = [];
 
-const mediaDisplay = async (PhotographerId) => {
+const mediaDisplay = async () => {
   mediaData = await fetchMedia();
-  return mediaData.filter(
-    (element) => element.photographerId === PhotographerId
+  const photoId = mediaData.filter(
+    (element) => element.photographerId == pageId
   );
-};
-
-mediaDisplay(243).then((medias) => {
   const mediaContainer = document.querySelector(".media-display");
-  medias.forEach((element) => {
+  photoId.forEach((element) => {
     let media = factory(element);
     mediaContainer.innerHTML += media.displayList();
   });
-});
+};
+mediaDisplay();
 
 //Dropdown
 
@@ -67,8 +65,6 @@ function dropdownDisplay(dropdownEl) {
     const value = item.textContent;
     toggler.textContent = value;
     this.toggle(false);
-
-    this.element.dispatchEvent();
   };
 
   toggler.addEventListener("click", () => this.toggle());
@@ -97,6 +93,3 @@ const dropdown = new dropdownDisplay(document.querySelector(".dropdown"));
 dropdown.element.addEventListener("change", () => {
   console.log("change", dropdown.value);
 });
-console.log(dropdown.value);
-
-dropdown.toggle();

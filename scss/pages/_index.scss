@@ -58,3 +58,22 @@
     color: #757575;
   }
 }
+.main-link {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  font-weight: 700;
+  padding: 0.5rem;
+  background: $color-primary;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  transition: 0.5s;
+  &:hover,
+  &:focus {
+    background: $bg-secondary;
+    color: #000;
+  }
+}

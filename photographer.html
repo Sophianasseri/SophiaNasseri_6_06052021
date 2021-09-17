@@ -36,21 +36,27 @@
       <main>
         <section class="photographer-banner"></section>
         <section class="photographer-media">
-          <div class="dropdown">
-            <button
-              class="dropdown__toggle btn"
-              type="button"
-              aria-haspopup="true"
-            >
-              Popularité
-            </button>
-            <ul class="dropdown__menu" role="listbox" aria-expanded="false">
-              <li role="option" tabindex="0">Date</li>
-              <li role="option" tabindex="0">Titre</li>
-            </ul>
+          <div class="media-filter">
+            <p>Trier par</p>
+            <div class="dropdown">
+              <button
+                class="dropdown__toggle btn"
+                type="button"
+                aria-haspopup="true"
+              >
+                Popularité
+              </button>
+              <ul class="dropdown__menu" role="listbox" aria-expanded="false">
+                <li role="option" tabindex="0">Date</li>
+                <li role="option" tabindex="0">Titre</li>
+              </ul>
+            </div>
           </div>
           <div class="media-display"></div>
         </section>
+        <div class="modal-contact">
+          <form action=""></form>
+        </div>
       </main>
     </div>
     <script type="module" src="./js/photographer.js"></script>
