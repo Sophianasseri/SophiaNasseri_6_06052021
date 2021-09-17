@@ -1,9 +1,9 @@
 import { fetchPhotographer, fetchMedia, factory } from "./functions.js";
 
-const pageId = new URLSearchParams(location.search).get("id");
+export const pageId = new URLSearchParams(location.search).get("id");
 
 let photographerData = [];
-const photographerBannerDisplay = async () => {
+export const photographerBannerDisplay = async () => {
   photographerData = await fetchPhotographer();
 
   const getPhotographerId = photographerData.find(
