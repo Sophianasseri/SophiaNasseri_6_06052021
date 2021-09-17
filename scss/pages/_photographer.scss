@@ -1,7 +1,11 @@
+#photographer-main-content {
+  position: relative;
+  margin: 0 100px;
+}
+
 .photographer-banner {
   display: flex;
   align-items: center;
-  margin: 0 100px;
   padding: 3rem 2.5rem;
   background: $bg;
   border-radius: 5px;
@@ -33,15 +37,11 @@
   margin-top: 20px;
 }
 
-.photographer-media {
-  margin: 0 100px;
-}
-
 .media-display {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
-  gap: 50px;
+  gap: 95px;
 }
 
 .media-element {

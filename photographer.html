@@ -34,28 +34,63 @@
         </div>
       </header>
       <main>
-        <section class="photographer-banner"></section>
-        <section class="photographer-media">
-          <div class="media-filter">
-            <p>Trier par</p>
-            <div class="dropdown">
-              <button
-                class="dropdown__toggle btn"
-                type="button"
-                aria-haspopup="true"
-              >
-                Popularité
-              </button>
-              <ul class="dropdown__menu" role="listbox" aria-expanded="false">
-                <li role="option" tabindex="0">Date</li>
-                <li role="option" tabindex="0">Titre</li>
-              </ul>
+        <div id="photographer-main-content">
+          <section class="photographer-banner"></section>
+          <section class="photographer-media">
+            <div class="media-filter">
+              <p>Trier par</p>
+              <div class="dropdown">
+                <button
+                  class="dropdown__toggle btn"
+                  type="button"
+                  aria-haspopup="true"
+                >
+                  Popularité
+                </button>
+                <ul class="dropdown__menu" role="listbox" aria-expanded="false">
+                  <li role="option" tabindex="0">Date</li>
+                  <li role="option" tabindex="0">Titre</li>
+                </ul>
+              </div>
             </div>
+            <div class="media-display"></div>
+          </section>
+          <div class="modal">
+            <form
+              id="contact"
+              name="contact"
+              action="photographer.html"
+              method="GET"
+            >
+              <div class="modal-header">
+                <h1>Contactez-moi</h1>
+                <i id="close-modal" class="fas fa-times"></i>
+              </div>
+              <h2>Mimi Keel</h2>
+              <div class="form-data">
+                <label for="first">Prénom</label>
+                <input type="text" id="first" name="first" />
+              </div>
+              <div class="form-data">
+                <label for="last">Nom</label>
+                <input type="text" id="last" name="last" />
+              </div>
+            </form>
+            <div class="form-data">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div class="form-data">
+              <label for="message">Votre message</label>
+              <textarea
+                name="message"
+                id="message"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+            <input type="submit" value="Envoyer" class="btn" />
           </div>
-          <div class="media-display"></div>
-        </section>
-        <div class="modal-contact">
-          <form action=""></form>
         </div>
       </main>
     </div>
