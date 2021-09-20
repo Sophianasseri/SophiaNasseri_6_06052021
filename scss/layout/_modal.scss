@@ -50,6 +50,7 @@
     border: none;
     border-radius: 3px;
     resize: none;
+    outline: none;
   }
   & label {
     font-size: 22px;
@@ -66,4 +67,14 @@ input[type="submit"] {
   &:focus {
     cursor: pointer;
   }
+}
+
+.error {
+  border: red solid 3px !important;
+}
+
+small {
+  font-style: oblique;
+  font-size: 16px;
+  margin: 3px;
 }
