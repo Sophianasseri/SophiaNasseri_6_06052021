@@ -48,6 +48,10 @@ const mediaDisplay = async () => {
   const photoId = mediaData.filter(
     (element) => element.photographerId == pageId
   );
+  //Tri par popularité
+  photoId.sort((a, b) => (a.likes < b.likes ? 1 : -1));
+
+  //Afficher les images en fonction de l'id du photographe
   const mediaContainer = document.querySelector(".media-display");
   photoId.forEach((element) => {
     let media = factory(element);
