@@ -1,12 +1,13 @@
-import { fetchPhotographer } from "./functions.js";
-//Bouton passer au contenu
-const mainLink = document.querySelector(".main-link");
+/* eslint-disable import/extensions */
+import { fetchPhotographer } from './functions.js';
+// Bouton passer au contenu
+const mainLink = document.querySelector('.main-link');
 
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   if (window.scrollY > 120) {
-    mainLink.style.display = "inline";
+    mainLink.style.display = 'inline';
   } else {
-    mainLink.style.display = "none";
+    mainLink.style.display = 'none';
   }
 });
 
@@ -14,70 +15,70 @@ let photographerData = [];
 
 const photographerDisplay = async () => {
   photographerData = await fetchPhotographer();
-  document.querySelector(".photographer-container").innerHTML = photographerData
+  document.querySelector('.photographer-container').innerHTML = photographerData
     .map((photographer) => {
-      let tags = [];
-      for (let i = 0; i < photographer.tags.length; i++) {
+      const tags = [];
+      for (let i = 0; i < photographer.tags.length; i += 1) {
         tags.push(
-          `  <li><a href="#" class="tag" data-tag="${photographer.tags[i]}">#${photographer.tags[i]}</a></li>`
+          `  <li><a href="#" class="tag" data-tag="${photographer.tags[i]}">#${photographer.tags[i]}</a></li>`,
         );
       }
 
       return `
         <section class="photographer">
           <a href="./photographer.html?id=${
-            photographer.id
-          }" class="photographer-link">
+  photographer.id
+}" class="photographer-link">
             <img src="images/photographers/${
-              photographer.portrait
-            }" class="profile-image" alt="" />
+  photographer.portrait
+}" class="profile-image" alt="" />
             <h2 class="photographer__name profile-name">${
-              photographer.name
-            }</h2>
+  photographer.name
+}</h2>
           </a>
           <div class="photographer__description">
             <p class="photographer__location profile-location">${
-              photographer.city
-            }, ${photographer.country}</p>
+  photographer.city
+}, ${photographer.country}</p>
             <p class="photographer__tagline">${photographer.tagline}</p>
            <p class="photographer__price">${photographer.price}€/jour</p>
           </div>
           <ul>
-            ${tags.join("")}
+            ${tags.join('')}
             <span></span>
          </ul>
       </section>
 
         `;
     })
-    .join("");
+    .join('');
 };
 
 photographerDisplay();
 
-//Filtres
+// Filtres
 const tagFilter = async () => {
   await fetchPhotographer();
   await photographerDisplay();
 
-  const tagEl = document.querySelectorAll(".tag");
+  const tagEl = document.querySelectorAll('.tag');
 
   tagEl.forEach((tags) => {
-    tags.addEventListener("click", (e) => {
+    tags.addEventListener('click', (e) => {
       e.target.dataset.tag;
 
-      const photographerEl = document.querySelectorAll(".photographer");
+      const photographerEl = document.querySelectorAll('.photographer');
       photographerEl.forEach((photographer) => {
         const photographerTags = Array.from(
-          photographer.querySelectorAll(".tag")
+          photographer.querySelectorAll('.tag'),
         ).map((element) => element.dataset.tag);
         const containSelectedTag = photographerTags.includes(
-          e.target.dataset.tag
+          e.target.dataset.tag,
         );
         if (containSelectedTag) {
-          photographer.style.display = "flex";
+          photographer.style.display = 'flex';
         } else {
-          photographer.style.display = "none";
+          photographer.style.display = 'none';
         }
       });
     });

@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export class ImageMedia {
   constructor(media) {
     this.id = media.id;
@@ -7,6 +8,7 @@ export class ImageMedia {
     this.tags = media.tags;
     this.likes = media.likes;
   }
+
   displayList() {
     return `
         <div class="media-element">

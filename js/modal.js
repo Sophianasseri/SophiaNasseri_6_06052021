@@ -1,17 +1,16 @@
-import { pageId } from "./photographer.js";
-import { fetchPhotographer } from "./functions.js";
+/* eslint-disable import/extensions */
+import { pageId } from './photographer.js';
+import { fetchPhotographer } from './functions.js';
 
-//Générer modale dynamiquement
+// Générer modale dynamiquement
 
 let photographerData = [];
 
-const modal = document.querySelector(".modal");
+const modal = document.querySelector('.modal');
 
 const createModal = async () => {
   photographerData = await fetchPhotographer();
-  const getPhotographerId = photographerData.find(
-    (element) => element.id == pageId
-  );
+  const getPhotographerId = photographerData.find((element) => element.id === parseInt(pageId, 10));
   modal.innerHTML = `
            <form
               id="contact"
@@ -55,59 +54,59 @@ const createModal = async () => {
 };
 createModal();
 
-//Ouvrir et fermer la modale
+// Ouvrir et fermer la modale
 
 const modaldisplay = async () => {
   await createModal();
-  const modalBtn = document.querySelector(".modal-btn");
-  const closeBtn = document.querySelector("#close-modal");
-  const modalBg = document.querySelector(".modal-background");
+  const modalBtn = document.querySelector('.modal-btn');
+  const closeBtn = document.querySelector('#close-modal');
+  const modalBg = document.querySelector('.modal-background');
 
-  modalBtn.addEventListener("click", () => {
-    modal.style.display = "block";
-    modalBg.style.display = "block";
+  modalBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    modalBg.style.display = 'block';
   });
-  closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalBg.style.display = "none";
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    modalBg.style.display = 'none';
   });
 };
 modaldisplay();
 
-//Validation formulaire
+// Validation formulaire
 const validateForm = async () => {
   await modaldisplay();
-  const modalBg = document.querySelector(".modal-background");
-  const form = document.getElementById("contact");
-  const firstNameEl = document.getElementById("first");
-  const lastNameEl = document.getElementById("last");
-  const emailEl = document.getElementById("email");
-  const messageEl = document.getElementById("message");
+  const modalBg = document.querySelector('.modal-background');
+  const form = document.getElementById('contact');
+  const firstNameEl = document.getElementById('first');
+  const lastNameEl = document.getElementById('last');
+  const emailEl = document.getElementById('email');
+  const messageEl = document.getElementById('message');
 
-  const isrequired = (value) => (value === "" ? false : true);
+  const isrequired = (value) => (value !== '');
 
   const showError = (input, message) => {
     const parentEl = input.parentElement;
-    input.classList.add("error");
+    input.classList.add('error');
 
-    const error = parentEl.querySelector("small");
+    const error = parentEl.querySelector('small');
     error.textContent = message;
   };
 
   const showSuccess = (input) => {
     const parentEl = input.parentElement;
-    input.classList.remove("error");
-    const error = parentEl.querySelector("small");
-    error.textContent = "";
+    input.classList.remove('error');
+    const error = parentEl.querySelector('small');
+    error.textContent = '';
   };
   const checkFirstName = () => {
     let valid = false;
     const value = firstNameEl.value.trim();
 
     if (!isrequired(value)) {
-      showError(firstNameEl, "Veuillez entrer un prénom");
+      showError(firstNameEl, 'Veuillez entrer un prénom');
     } else if (value.length < 2) {
-      showError(firstNameEl, "Veillez entrer 2 caractères minimum");
+      showError(firstNameEl, 'Veillez entrer 2 caractères minimum');
     } else {
       valid = true;
       showSuccess(firstNameEl);
@@ -118,9 +117,9 @@ const validateForm = async () => {
     let valid = false;
     const value = lastNameEl.value.trim();
     if (!isrequired(value)) {
-      showError(lastNameEl, "Veuillez entrer un nom");
+      showError(lastNameEl, 'Veuillez entrer un nom');
     } else if (value.length < 2) {
-      showError(lastNameEl, "Veillez entrer 2 caractères minimum");
+      showError(lastNameEl, 'Veillez entrer 2 caractères minimum');
     } else {
       showSuccess(lastNameEl);
       valid = true;
@@ -133,9 +132,9 @@ const validateForm = async () => {
     let valid = false;
     const value = emailEl.value.trim();
     if (!isrequired(value)) {
-      showError(emailEl, "Veuillez entrer un e-mail");
+      showError(emailEl, 'Veuillez entrer un e-mail');
     } else if (!value.match(emailValid)) {
-      showError(emailEl, "Veillez entrer un e-mail valide");
+      showError(emailEl, 'Veillez entrer un e-mail valide');
     } else {
       showSuccess(emailEl);
       valid = true;
@@ -147,7 +146,7 @@ const validateForm = async () => {
     let valid = false;
     const value = messageEl.value.trim();
     if (!isrequired(value)) {
-      showError(messageEl, "Ce champ ne peut être vide");
+      showError(messageEl, 'Ce champ ne peut être vide');
     } else {
       showSuccess(messageEl);
       valid = true;
@@ -155,7 +154,7 @@ const validateForm = async () => {
     return valid;
   };
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const firstNameValidation = checkFirstName();
@@ -163,33 +162,33 @@ const validateForm = async () => {
     const emailValidation = checkEmail();
     const messageValidation = checkMessage();
 
-    const formValidation =
-      firstNameValidation &&
-      lastNameValidation &&
-      emailValidation &&
-      messageValidation;
+    const formValidation = firstNameValidation
+      && lastNameValidation
+      && emailValidation
+      && messageValidation;
 
     if (formValidation) {
-      modal.style.display = "none";
-      modalBg.style.display = "none";
+      modal.style.display = 'none';
+      modalBg.style.display = 'none';
       form.reset();
     }
   });
 
-  form.addEventListener("input", (e) => {
+  form.addEventListener('input', (e) => {
     switch (e.target.id) {
-      case "first":
+      case 'first':
         checkFirstName();
         break;
-      case "last":
+      case 'last':
         checkLastName();
         break;
-      case "email":
+      case 'email':
         checkEmail();
         break;
-      case "message":
+      case 'message':
         checkMessage();
         break;
+      default:
     }
   });
 };
