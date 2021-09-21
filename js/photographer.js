@@ -57,7 +57,6 @@ const mediaDisplay = async () => {
 mediaDisplay();
 
 //Dropdown
-const dropdown = document.querySelector(".dropdown");
 const toggle = document.querySelector(".dropdown__toggle");
 const menu = document.querySelector(".dropdown__menu");
 
@@ -83,7 +82,7 @@ const option = menu.querySelectorAll("li");
 option.forEach((item) => {
   item.addEventListener("click", () => setValue(item));
 });
-const dropdownDisplay = () => {};
+
 const setValue = (element) => {
   const elementValue = element.textContent;
   const toggleValue = toggle.textContent;
@@ -92,5 +91,3 @@ const setValue = (element) => {
 
   toggler(false);
 };
-
-dropdownDisplay();

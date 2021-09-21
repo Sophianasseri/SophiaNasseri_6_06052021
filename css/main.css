@@ -542,7 +542,7 @@ small {
 
 .dropdown__menu {
   background: #901c1c;
-  padding-top: 1rem;
+  padding: 1rem 0.8rem 0 0.8rem;
   margin: 0;
   max-width: 158px;
   width: calc(100% + 10px);
