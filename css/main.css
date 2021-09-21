@@ -572,11 +572,6 @@ small {
   opacity: 1;
 }
 
-.dropdown__menu li:hover, .dropdown__menu li:focus {
-  background: #db8876;
-  color: #000;
-}
-
 .dropdown .dropdown__toggle.active::after {
   content: "\f077";
   top: calc(50% - 1px);

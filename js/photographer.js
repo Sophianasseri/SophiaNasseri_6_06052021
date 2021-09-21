@@ -57,39 +57,40 @@ const mediaDisplay = async () => {
 mediaDisplay();
 
 //Dropdown
+const dropdown = document.querySelector(".dropdown");
+const toggle = document.querySelector(".dropdown__toggle");
+const menu = document.querySelector(".dropdown__menu");
 
-function dropdownDisplay(dropdownEl) {
-  const [toggler, menu] = dropdownEl.children;
+const toggler = (expand = null) => {
+  expand =
+    expand === null ? menu.getAttribute("aria-expanded") !== "true" : expand;
 
-  const setValue = (item) => {
-    const value = item.textContent;
-    toggler.textContent = value;
-    this.toggle(false);
-  };
+  menu.setAttribute("aria-expanded", expand);
 
-  toggler.addEventListener("click", () => this.toggle());
+  if (expand) {
+    toggle.classList.add("active");
+  } else {
+    toggle.classList.remove("active");
+  }
+};
 
-  [...menu.children].forEach((item) => {
-    item.addEventListener("click", () => setValue(item));
-  });
-
-  this.element = dropdownEl;
-  this.value = toggler.textContent;
-  this.toggle = (expand = null) => {
-    expand =
-      expand === null ? menu.getAttribute("aria-expanded") !== "true" : expand;
-    menu.setAttribute("aria-expanded", expand);
-
-    if (expand) {
-      toggler.classList.add("active");
-    } else {
-      toggler.classList.remove("active");
-    }
-  };
-}
-
-const dropdown = new dropdownDisplay(document.querySelector(".dropdown"));
-
-dropdown.element.addEventListener("change", () => {
-  console.log("change", dropdown.value);
+toggle.addEventListener("click", () => {
+  toggler();
 });
+
+const option = menu.querySelectorAll("li");
+
+option.forEach((item) => {
+  item.addEventListener("click", () => setValue(item));
+});
+const dropdownDisplay = () => {};
+const setValue = (element) => {
+  const elementValue = element.textContent;
+  const toggleValue = toggle.textContent;
+  toggle.textContent = elementValue;
+  element.textContent = toggleValue;
+
+  toggler(false);
+};
+
+dropdownDisplay();
