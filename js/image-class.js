@@ -1,18 +1,17 @@
 /* eslint-disable import/prefer-default-export */
 export class ImageMedia {
   constructor(media) {
-    this.id = media.id;
-    this.photographerId = media.photographerId;
     this.title = media.title;
     this.image = media.image;
-    this.tags = media.tags;
     this.likes = media.likes;
   }
 
   displayList() {
     return `
         <div class="media-element">
-        <img src="images/media/${this.image}" alt="" class="media-element__thumb"></img>
+        <a href="./images/media/${this.image}">
+          <img src="images/media/${this.image}" alt="" class="media-element__thumb">
+        </a>
           <div class="media-element__info">
           <p class="media-element__title">${this.title}</p>
           <div class ="media-likes">

@@ -3,7 +3,7 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: "DM Sans", sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 a {
@@ -13,6 +13,11 @@ a {
 
 li {
   list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
 }
 
 #page-container {
@@ -249,7 +254,83 @@ small {
   margin: 3px;
 }
 
-.photographer {
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.lightbox__prev, .lightbox__next {
+  background: url(../../images/icones/chevron.svg) center center/32px 56px no-repeat;
+  position: fixed;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin-top: 28px;
+  z-index: 11;
+  opacity: 0.5;
+  text-indent: -3000px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.lightbox__prev:hover, .lightbox__next:hover {
+  opacity: 1;
+}
+
+.lightbox__close {
+  width: 32px;
+  height: 56px;
+  background: url(../../images/icones/times.svg) center center/32px 56px no-repeat;
+  position: fixed;
+  text-indent: -50000px;
+  top: 50px;
+  right: 0;
+  z-index: 12;
+}
+
+.lightbox__container {
+  margin-left: 50px;
+  margin-right: 50px;
+  min-height: 100vh;
+}
+
+.lightbox__container img {
+  max-width: 100%;
+  height: 800px;
+}
+
+.lightbox__container video {
+  max-width: 800px;
+}
+
+.lightbox__prev {
+  right: auto;
+  left: 0;
+}
+
+.lightbox__next {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.lightox.fade-out {
+  opacity: 0;
+}
+
+.lightbox.close {
+  display: none;
+}
+
+.lightbox__container, .photographer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -531,8 +612,8 @@ small {
 }
 
 .dropdown__toggle::after {
-  content: "\f078";
-  font-family: "Font Awesome 5 Free";
+  content: '\f078';
+  font-family: 'Font Awesome 5 Free';
   position: absolute;
   right: 17px;
   top: calc(50% + 1px);
@@ -573,11 +654,11 @@ small {
 }
 
 .dropdown .dropdown__toggle.active::after {
-  content: "\f077";
+  content: '\f077';
   top: calc(50% - 1px);
 }
 
-.dropdown .dropdown__menu[aria-expanded="true"] {
+.dropdown .dropdown__menu[aria-expanded='true'] {
   visibility: visible;
 }
 /*# sourceMappingURL=main.css.map */

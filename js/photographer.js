@@ -1,5 +1,7 @@
 /* eslint-disable import/extensions */
 import { fetchPhotographer, fetchMedia, factory } from './functions.js';
+import { LightboxImage } from './lightbox.js';
+import { LightboxVideo } from './lightoboc2.js';
 
 export const pageId = new URLSearchParams(window.location.search).get('id');
 
@@ -41,20 +43,18 @@ photographerBannerDisplay();
 
 let mediaData = [];
 
-const mediaDisplay = async (filter) => {
+export const mediaDisplay = async (filter) => {
   mediaData = await fetchMedia();
 
   const photoId = mediaData.filter((element) => element.photographerId === parseInt(pageId, 10));
+  // Trier les médias en fonction du filtre
   if (filter === 'Popularité') {
-    // Tri par popularité
     photoId.sort((a, b) => (a.likes < b.likes ? 1 : -1));
   } else if (filter === 'Date') {
     photoId.sort((a, b) => (a.date < b.date ? 1 : -1));
   } else if (filter === 'Titre') {
     photoId.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
-
-  // Tri par date
 
   // Afficher les images en fonction de l'id du photographe
   const mediaContainer = document.querySelector('.media-display');
@@ -100,3 +100,45 @@ const setValue = (element) => {
 option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
+
+const lightboxDisplay = async () => {
+  mediaData = await fetchMedia();
+  await mediaDisplay('Popularité');
+  // Afficher les images en fonction de l'id du photographe
+
+  const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
+
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const mediaUrl = e.currentTarget.getAttribute('href');
+      const image = link.querySelector('img');
+      const video = link.querySelector('video');
+      const lightbox = document.querySelector('.lightbox');
+      lightbox.classList.remove('close');
+      const lightboxContainer = document.createElement('div');
+      lightboxContainer.classList.add('lightbox__container');
+      lightbox.appendChild(lightboxContainer);
+
+      if(image) {
+        lightboxContainer.innerHTML = `
+        <div class="lightbox__container">
+          <img src="${mediaUrl}" alt=""/>
+          <p></p>
+      </div>
+        `
+      } else if(video){
+        lightboxContainer.innerHTML =`
+        <div class="lightbox__container">
+          <video controls="">
+          <source src="${mediaUrl}" type="video/mp4"/>
+          <video>
+          <p></p>
+      </div>`
+      }
+      
+
+    });
+  });
+};
+lightboxDisplay();
