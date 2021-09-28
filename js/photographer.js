@@ -1,7 +1,7 @@
 /* eslint-disable import/extensions */
 import { fetchPhotographer, fetchMedia, factory } from './functions.js';
-import { LightboxImage } from './lightbox.js';
-import { LightboxVideo } from './lightoboc2.js';
+import { LightboxImage } from './lightbox-image-class.js';
+import { LightboxVideo } from './lightbox-video-class.js';
 
 export const pageId = new URLSearchParams(window.location.search).get('id');
 
@@ -104,40 +104,49 @@ option.forEach((item) => {
 const lightboxDisplay = async () => {
   mediaData = await fetchMedia();
   await mediaDisplay('Popularité');
-  // Afficher les images en fonction de l'id du photographe
 
-  const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
+  const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"'));
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxContainer = document.createElement('div');
+  const gallery = links.map((link) => link.getAttribute('href'));
+  lightboxContainer.classList.add('lightbox__container');
+  lightbox.appendChild(lightboxContainer);
 
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
       const mediaUrl = e.currentTarget.getAttribute('href');
-      const image = link.querySelector('img');
-      const video = link.querySelector('video');
-      const lightbox = document.querySelector('.lightbox');
+      const imageEl = link.querySelector('img');
+      const videoEl = link.querySelector('video');
+
+      e.preventDefault();
+      // Ouvrir la lightbox
       lightbox.classList.remove('close');
-      const lightboxContainer = document.createElement('div');
-      lightboxContainer.classList.add('lightbox__container');
-      lightbox.appendChild(lightboxContainer);
-
-      if(image) {
-        lightboxContainer.innerHTML = `
-        <div class="lightbox__container">
-          <img src="${mediaUrl}" alt=""/>
-          <p></p>
-      </div>
-        `
-      } else if(video){
-        lightboxContainer.innerHTML =`
-        <div class="lightbox__container">
-          <video controls="">
-          <source src="${mediaUrl}" type="video/mp4"/>
-          <video>
-          <p></p>
-      </div>`
-      }
-      
-
+      // Afficher le contenu de lightbox en fontion du média
+      const factoryLightbox = () => {
+        if (imageEl) {
+          return new LightboxImage(mediaUrl);
+        } if (videoEl) {
+          return new LightboxVideo(mediaUrl);
+        }
+        return undefined;
+      };
+      const createMedia = () => {
+        lightboxContainer.innerHTML = '';
+        const media = factoryLightbox();
+        lightboxContainer.innerHTML += media.displayLightbox(mediaUrl);
+      };
+      createMedia();
+      // Fermer la lightbox
+      lightbox.querySelector('.lightbox__close').addEventListener('click', () => {
+        lightbox.classList.add('close');
+      });
+      lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
+        let i = gallery.findIndex((element) => element === mediaUrl);
+        if (i === gallery.length - 1) {
+          i = -1;
+        }
+        createMedia(gallery[i + 1]);
+      });
     });
   });
 };
