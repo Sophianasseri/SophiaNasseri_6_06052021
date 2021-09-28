@@ -103,6 +103,6 @@ const photoId = mediaData.filter((element) => element.photographerId === parseIn
 
 photoId.forEach((element) => {
   
-  const media = factory2(element);
+  const media = factoryLightbox(element);
   lightboxContainer.innerHTML += media.displayLightbox(mediaUrl);
 })

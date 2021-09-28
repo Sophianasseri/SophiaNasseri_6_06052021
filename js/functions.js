@@ -1,7 +1,5 @@
 /* eslint-disable import/extensions */
 import { ImageMedia } from './image-class.js';
-import { LightboxImage } from './lightbox.js';
-import { LightboxVideo } from './lightoboc2.js';
 import { VideoMedia } from './video-class.js';
 
 export const fetchPhotographer = async () => {
@@ -24,13 +22,3 @@ export const factory = (media) => {
   }
   return undefined;
 };
-export const factoryLightbox = (media) => {
-  if (media.image) {
-    return new 
-    LightboxImage(e.currentTarget.getAttribute('href'));
-  } if (media.video) {
-    return new LightboxVideo(e.currentTarget.getAttribute('href'));
-  }
-  return undefined;
-};
-
