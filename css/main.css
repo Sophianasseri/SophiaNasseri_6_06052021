@@ -666,4 +666,35 @@ small {
 .dropdown .dropdown__menu[aria-expanded='true'] {
   visibility: visible;
 }
+
+.like-counter {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  width: 250px;
+  padding: 0.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #db8876;
+  border-radius: 5px 5px 0 0;
+}
+
+.total-likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.total-likes__number {
+  margin-right: 5px;
+}
 /*# sourceMappingURL=main.css.map */
