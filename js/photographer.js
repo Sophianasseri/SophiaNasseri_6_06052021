@@ -1,7 +1,5 @@
 /* eslint-disable import/extensions */
 import { fetchPhotographer, getMediasFromPhotographer, factory } from './functions.js';
-import { LightboxImage } from './lightbox-image-class.js';
-import { LightboxVideo } from './lightbox-video-class.js';
 
 let photographerData = [];
 let mediaData = [];
@@ -113,18 +111,11 @@ const lightboxDisplay = async () => {
       e.preventDefault();
       // Ouvrir la lightbox
       lightbox.classList.remove('close');
-      // Afficher le contenu de lightbox en fontion du média
-      const factoryLightbox = (media) => {
-        if (media.image) {
-          return new LightboxImage(media);
-        } if (media.video) {
-          return new LightboxVideo(media);
-        }
-        return undefined;
-      };
+      // Afficher le contenu de la lightbox en fontion du média
+
       const createMedia = (media) => {
         lightboxContainer.innerHTML = '';
-        const mediaLightbox = factoryLightbox(media);
+        const mediaLightbox = factory(media);
         lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
         // Fermer la lightbox
         lightbox.querySelector('.lightbox__close').addEventListener('click', () => {
