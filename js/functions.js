@@ -22,3 +22,8 @@ export const factory = (media) => {
   }
   return undefined;
 };
+
+export const getMediasFromPhotographer = async (id) => {
+  const medias = await fetchMedia();
+  return medias.filter((element) => element.photographerId === parseInt(id, 10));
+};

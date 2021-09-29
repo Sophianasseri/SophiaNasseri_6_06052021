@@ -1,11 +1,12 @@
 /* eslint-disable import/extensions */
-import { fetchPhotographer, fetchMedia, factory } from './functions.js';
+import { fetchPhotographer, getMediasFromPhotographer, factory } from './functions.js';
 import { LightboxImage } from './lightbox-image-class.js';
 import { LightboxVideo } from './lightbox-video-class.js';
 
+let photographerData = [];
+let mediaData = [];
 export const pageId = new URLSearchParams(window.location.search).get('id');
 
-let photographerData = [];
 export const photographerBannerDisplay = async () => {
   photographerData = await fetchPhotographer();
   const getPhotographerId = photographerData.find((element) => element.id === parseInt(pageId, 10));
@@ -41,30 +42,26 @@ export const photographerBannerDisplay = async () => {
 };
 photographerBannerDisplay();
 
-let mediaData = [];
 
 export const mediaDisplay = async (filter) => {
-  mediaData = await fetchMedia();
-
-  const photoId = mediaData.filter((element) => element.photographerId === parseInt(pageId, 10));
+  mediaData = await getMediasFromPhotographer(pageId);
   // Trier les médias en fonction du filtre
   if (filter === 'Popularité') {
-    photoId.sort((a, b) => (a.likes < b.likes ? 1 : -1));
+    mediaData.sort((a, b) => (a.likes < b.likes ? 1 : -1));
   } else if (filter === 'Date') {
-    photoId.sort((a, b) => (a.date < b.date ? 1 : -1));
+    mediaData.sort((a, b) => (a.date < b.date ? 1 : -1));
   } else if (filter === 'Titre') {
-    photoId.sort((a, b) => (a.title > b.title ? 1 : -1));
+    mediaData.sort((a, b) => (a.title > b.title ? 1 : -1));
   }
 
   // Afficher les images en fonction de l'id du photographe
   const mediaContainer = document.querySelector('.media-display');
   mediaContainer.innerHTML = '';
-  photoId.forEach((element) => {
+ mediaData.forEach((element) => {
     const media = factory(element);
     mediaContainer.innerHTML += media.displayList();
   });
 };
-mediaDisplay('Popularité');
 
 // Dropdown
 const toggle = document.querySelector('.dropdown__toggle');
@@ -101,52 +98,63 @@ option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
 
+
+
+
+
 const lightboxDisplay = async () => {
-  mediaData = await fetchMedia();
   await mediaDisplay('Popularité');
 
   const links = Array.from(document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"'));
   const lightbox = document.querySelector('.lightbox');
   const lightboxContainer = document.createElement('div');
-  const gallery = links.map((link) => link.getAttribute('href'));
   lightboxContainer.classList.add('lightbox__container');
   lightbox.appendChild(lightboxContainer);
 
   links.forEach((link) => {
     link.addEventListener('click', (e) => {
-      const mediaUrl = e.currentTarget.getAttribute('href');
-      const imageEl = link.querySelector('img');
-      const videoEl = link.querySelector('video');
+      const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
 
       e.preventDefault();
       // Ouvrir la lightbox
       lightbox.classList.remove('close');
       // Afficher le contenu de lightbox en fontion du média
-      const factoryLightbox = () => {
-        if (imageEl) {
-          return new LightboxImage(mediaUrl);
-        } if (videoEl) {
-          return new LightboxVideo(mediaUrl);
+      const factoryLightbox = (media) => {
+        if (media.image) {
+          return new LightboxImage(media);
+        } if (media.video) {
+          return new LightboxVideo(media);
         }
         return undefined;
       };
-      const createMedia = () => {
+      const createMedia = (media) => {
         lightboxContainer.innerHTML = '';
-        const media = factoryLightbox();
-        lightboxContainer.innerHTML += media.displayLightbox(mediaUrl);
+        const mediaLightbox = factoryLightbox(media);
+        lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
+        // Fermer la lightbox
+        lightbox.querySelector('.lightbox__close').addEventListener('click', () => {
+          lightbox.classList.add('close');
+        });
+        lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
+          let i = mediaData.findIndex((element) => element.id === media.id);
+          if (i === mediaData.length - 1) {
+            i = 0;
+          } else {
+            i += 1;
+          }
+          createMedia(mediaData[i]);
+        });
+        lightbox.querySelector('.lightbox__prev').addEventListener('click', () => {
+          let i = mediaData.findIndex((element) => element.id === media.id);
+          if (i === 0) {
+            i = mediaData.length - 1;
+          } else {
+            i -= 1;
+          }
+          createMedia(mediaData[i]);
+        });
       };
-      createMedia();
-      // Fermer la lightbox
-      lightbox.querySelector('.lightbox__close').addEventListener('click', () => {
-        lightbox.classList.add('close');
-      });
-      lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
-        let i = gallery.findIndex((element) => element === mediaUrl);
-        if (i === gallery.length - 1) {
-          i = -1;
-        }
-        createMedia(gallery[i + 1]);
-      });
+      createMedia(mediaId);
     });
   });
 };

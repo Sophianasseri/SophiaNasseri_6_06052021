@@ -1,15 +1,15 @@
 /* eslint-disable import/prefer-default-export */
 export class LightboxImage {
-  constructor(media, url) {
-    this.element = this.displayLightbox(url);
+  constructor(media) {
     this.title = media.title;
+    this.url = media.image;
   }
 
-  displayLightbox(url) {
+  displayLightbox() {
     return `
     <button class="lightbox__prev">Précédent</button>
     <div class = "lightbox-media">
-    <img src="${url}" alt=""/>
+    <img src="./images/media/${this.url}" alt=""/>
     <p>${this.title}</p>
     </div>
     <div class= "lightbox-btn">

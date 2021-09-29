@@ -1,16 +1,16 @@
 /* eslint-disable import/prefer-default-export */
 export class LightboxVideo {
-  constructor(media, url) {
-    this.element = this.displayLightbox(url);
+  constructor(media) {
     this.title = media.title;
+    this.url = media.video;
   }
 
-  displayLightbox(url) {
+  displayLightbox() {
     return `
     <button class="lightbox__prev">Précédent</button>
     <div class = "lightbox-media">
       <video controls="">
-          <source src="${url}" type="video/mp4"/>
+          <source src="./images/media/${this.url}" type="video/mp4"/>
       </video>
       <p>${this.title}</p>
     </div>
