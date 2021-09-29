@@ -1,17 +1,15 @@
 /* eslint-disable import/extensions */
-import { fetchPhotographer, getMediasFromPhotographer, factory } from './functions.js';
+import {getMediasFromPhotographer, factory, getPhotographerId, pageId} from './functions.js';
 
 let photographerData = [];
 let mediaData = [];
-export const pageId = new URLSearchParams(window.location.search).get('id');
 
 export const photographerBannerDisplay = async () => {
-  photographerData = await fetchPhotographer();
-  const getPhotographerId = photographerData.find((element) => element.id === parseInt(pageId, 10));
+  photographerData = await getPhotographerId();
   const tags = [];
-  for (let i = 0; i < getPhotographerId.tags.length; i += 1) {
+  for (let i = 0; i < photographerData.tags.length; i += 1) {
     tags.push(
-      `  <li><a href="#" class="tag" data-tag="${getPhotographerId.tags[i]}">#${getPhotographerId.tags[i]}</a></li>`,
+      `  <li><a href="#" class="tag" data-tag="${photographerData.tags[i]}">#${photographerData.tags[i]}</a></li>`,
     );
   }
 
@@ -19,13 +17,13 @@ export const photographerBannerDisplay = async () => {
       
   <div class="photographer-banner__description">
   <h1 class="photographer-banner__name profile-name">${
-  getPhotographerId.name
+  photographerData.name
 }</h1>
   <div>
       <p class="photographer-banner__location profile-location">${
-  getPhotographerId.city
-}, ${getPhotographerId.country}</p>
-      <p class="photographer-banner__tagline">${getPhotographerId.tagline}</p>
+  photographerData.city
+}, ${photographerData.country}</p>
+      <p class="photographer-banner__tagline">${photographerData.tagline}</p>
   </div>
    <ul>
        <li><a href="#" class="tags" data-tags=""></a>${tags.join('')}</li>
@@ -34,7 +32,7 @@ export const photographerBannerDisplay = async () => {
  </div>
  <button class="modal-btn btn">Contactez-moi</button>
  <img src="images/photographers/${
-  getPhotographerId.portrait
+  photographerData.portrait
 }" class="profile-image" alt="">
  `;
 };
@@ -94,7 +92,8 @@ const setValue = (element) => {
 option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
-//Lightbox
+
+// Lightbox
 mediaDisplay('Popularité').then(() => {
   const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
   const lightbox = document.querySelector('.lightbox');

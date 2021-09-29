@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
-import { pageId } from './photographer.js';
-import { fetchPhotographer } from './functions.js';
+import { fetchPhotographer, pageId } from './functions.js';
 
 // Générer modale dynamiquement
 

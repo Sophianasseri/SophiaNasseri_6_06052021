@@ -14,6 +14,13 @@ export const fetchMedia = async () => {
   return data.media;
 };
 
+export const pageId = new URLSearchParams(window.location.search).get('id');
+
+export const getPhotographerId = async () => {
+  const photographer = await fetchPhotographer();
+  return photographer.find((element) => element.id === parseInt(pageId, 10));
+};
+
 export const factory = (media) => {
   if (media.image) {
     return new ImageMedia(media);
