@@ -42,7 +42,6 @@ export const photographerBannerDisplay = async () => {
 };
 photographerBannerDisplay();
 
-
 export const mediaDisplay = async (filter) => {
   mediaData = await getMediasFromPhotographer(pageId);
   // Trier les médias en fonction du filtre
@@ -57,7 +56,7 @@ export const mediaDisplay = async (filter) => {
   // Afficher les images en fonction de l'id du photographe
   const mediaContainer = document.querySelector('.media-display');
   mediaContainer.innerHTML = '';
- mediaData.forEach((element) => {
+  mediaData.forEach((element) => {
     const media = factory(element);
     mediaContainer.innerHTML += media.displayList();
   });
@@ -97,10 +96,6 @@ const setValue = (element) => {
 option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
-
-
-
-
 
 const lightboxDisplay = async () => {
   await mediaDisplay('Popularité');
