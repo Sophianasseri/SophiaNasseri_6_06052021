@@ -1,5 +1,5 @@
 /* eslint-disable import/extensions */
-import { fetchPhotographer, pageId } from './functions.js';
+import { getPhotographerId } from './functions.js';
 
 // Générer modale dynamiquement
 
@@ -8,8 +8,7 @@ let photographerData = [];
 const modal = document.querySelector('.modal');
 
 const createModal = async () => {
-  photographerData = await fetchPhotographer();
-  const getPhotographerId = photographerData.find((element) => element.id === parseInt(pageId, 10));
+  photographerData = await getPhotographerId();
   modal.innerHTML = `
            <form
               id="contact"
@@ -21,7 +20,7 @@ const createModal = async () => {
                 <h1>Contactez-moi</h1>
                 <i id="close-modal" class="fas fa-times"></i>
               </div>
-              <h2>${getPhotographerId.name}</h2>
+              <h2>${photographerData.name}</h2>
               <div class="form-data">
                 <label for="first">Prénom</label>
                 <input type="text" id="first" name="first" />

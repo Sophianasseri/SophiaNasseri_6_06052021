@@ -1,5 +1,7 @@
 /* eslint-disable import/extensions */
-import {getMediasFromPhotographer, factory, getPhotographerId, pageId} from './functions.js';
+import {
+  getMediasFromPhotographer, factory, getPhotographerId, pageId,
+} from './functions.js';
 
 let photographerData = [];
 let mediaData = [];
