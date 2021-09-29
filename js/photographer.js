@@ -6,7 +6,7 @@ import {
 let photographerData = [];
 let mediaData = [];
 
-export const photographerBannerDisplay = async () => {
+const photographerBannerDisplay = async () => {
   photographerData = await getPhotographerId();
   const tags = [];
   for (let i = 0; i < photographerData.tags.length; i += 1) {
@@ -40,7 +40,7 @@ export const photographerBannerDisplay = async () => {
 };
 photographerBannerDisplay();
 
-export const mediaDisplay = async (filter) => {
+const mediaDisplay = async (filter) => {
   mediaData = await getMediasFromPhotographer(pageId);
   // Trier les médias en fonction du filtre
   if (filter === 'Popularité') {
