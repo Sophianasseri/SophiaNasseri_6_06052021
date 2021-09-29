@@ -17,25 +17,19 @@ const photographerBannerDisplay = async () => {
 
   document.querySelector('.photographer-banner').innerHTML = `
       
-  <div class="photographer-banner__description">
-  <h1 class="photographer-banner__name profile-name">${
-  photographerData.name
-}</h1>
-  <div>
-      <p class="photographer-banner__location profile-location">${
-  photographerData.city
-}, ${photographerData.country}</p>
-      <p class="photographer-banner__tagline">${photographerData.tagline}</p>
-  </div>
-   <ul>
-       <li><a href="#" class="tags" data-tags=""></a>${tags.join('')}</li>
-       <span></span>
-   </ul>
- </div>
- <button class="modal-btn btn">Contactez-moi</button>
- <img src="images/photographers/${
-  photographerData.portrait
-}" class="profile-image" alt="">
+    <div class="photographer-banner__description">
+    <h1 class="photographer-banner__name profile-name">${photographerData.name}</h1>
+      <div>
+        <p class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
+        <p class="photographer-banner__tagline">${photographerData.tagline}</p>
+      </div>
+      <ul>
+        <li><a href="#" class="tags" data-tags=""></a>${tags.join('')}</li>
+        <span></span>
+      </ul>
+    </div>
+    <button class="modal-btn btn">Contactez-moi</button>
+    <img src="images/photographers/${photographerData.portrait}" class="profile-image" alt="">
  `;
 };
 photographerBannerDisplay();
