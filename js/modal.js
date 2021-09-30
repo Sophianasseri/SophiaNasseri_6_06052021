@@ -50,7 +50,6 @@ const createModal = async () => {
           </form>
   `;
 };
-createModal();
 
 // Ouvrir et fermer la modale
 
@@ -69,11 +68,9 @@ const modaldisplay = async () => {
     modalBg.style.display = 'none';
   });
 };
-modaldisplay();
 
 // Validation formulaire
-const validateForm = async () => {
-  await modaldisplay();
+modaldisplay().then(() => {
   const modalBg = document.querySelector('.modal-background');
   const form = document.getElementById('contact');
   const firstNameEl = document.getElementById('first');
@@ -189,6 +186,4 @@ const validateForm = async () => {
       default:
     }
   });
-};
-
-validateForm();
+});

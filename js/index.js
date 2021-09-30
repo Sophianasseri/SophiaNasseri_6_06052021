@@ -45,11 +45,8 @@ const photographerDisplay = async () => {
     .join('');
 };
 
-photographerDisplay();
-
 // Filtres
 const tagFilter = async () => {
-  await fetchPhotographer();
   await photographerDisplay();
 
   const tagEl = document.querySelectorAll('.tag');

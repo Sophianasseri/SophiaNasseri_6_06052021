@@ -3,6 +3,14 @@ import {
   getMediasFromPhotographer, factory, getPhotographerId, pageId,
 } from './functions.js';
 
+// Elements DOM
+const mediaContainer = document.querySelector('.media-display');
+const toggle = document.querySelector('.dropdown__toggle');
+const menu = document.querySelector('.dropdown__menu');
+const option = menu.querySelectorAll('li');
+const lightbox = document.querySelector('.lightbox');
+const lightboxContainer = document.createElement('div');
+
 let photographerData = [];
 let mediaData = [];
 
@@ -46,17 +54,17 @@ const mediaDisplay = async (filter) => {
   }
 
   // Afficher les images en fonction de l'id du photographe
-  const mediaContainer = document.querySelector('.media-display');
+
   mediaContainer.innerHTML = '';
   mediaData.forEach((element) => {
     const media = factory(element);
-    mediaContainer.innerHTML += media.displayList();
+    if (media !== undefined) {
+      mediaContainer.innerHTML += media.displayList();
+    }
   });
 };
 
 // Dropdown
-const toggle = document.querySelector('.dropdown__toggle');
-const menu = document.querySelector('.dropdown__menu');
 
 const toggler = (expand = null) => {
   const display = expand === null ? menu.getAttribute('aria-expanded') !== 'true' : expand;
@@ -74,8 +82,6 @@ toggle.addEventListener('click', () => {
   toggler();
 });
 
-const option = menu.querySelectorAll('li');
-
 const setValue = (element) => {
   const elt = element;
   const elementContent = element.textContent;
@@ -89,11 +95,8 @@ option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
 
-// Lightbox
 mediaDisplay('Popularité').then(() => {
   const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
-  const lightbox = document.querySelector('.lightbox');
-  const lightboxContainer = document.createElement('div');
 
   // Créer le container de la lightbox
   lightboxContainer.classList.add('lightbox__container');
@@ -112,7 +115,9 @@ mediaDisplay('Popularité').then(() => {
   const createMedia = (media) => {
     lightboxContainer.innerHTML = '';
     const mediaLightbox = factory(media);
-    lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
+    if (media !== undefined) {
+      lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
+    }
     let i = mediaData.findIndex((element) => element.id === media.id);
 
     // Navigation dans la lightbox
