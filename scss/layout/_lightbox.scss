@@ -10,12 +10,15 @@
   @extend %flex-center;
   &__prev,
   &__next {
+    top: 0;
+    right: 0;
+    height: 100%;
+    color: transparent;
     background: url(../../images/icones/chevron.svg) center center / 32px 56px
       no-repeat;
     padding: 3rem;
     width: 50px;
     z-index: 11;
-    text-indent: -3000px;
     cursor: pointer;
     transition: 0.3s;
     &:hover,
@@ -25,13 +28,13 @@
   }
   &__close {
     position: absolute;
-    top: 2.5rem;
-    right: 1rem;
+    color: transparent;
+    bottom: 750px;
+    right: 36px;
     width: 32px;
     height: 56px;
     background: url(../../images/icones/times.svg) center center / 32px 56px
       no-repeat;
-    text-indent: -50000px;
     z-index: 12;
     &:hover,
     &:focus {
@@ -44,19 +47,12 @@
     margin-left: 50px;
     margin-right: 50px;
     height: 80vh;
-    img {
-      margin: 0 10px;
-      max-width: 800px;
-      max-height: 800px;
-      height: 100%;
+    img, video {
+      
       width: 100%;
-    }
-    video {
-      margin: 0 10px;
-      max-width: 800px;
+      min-width: 300px;
       max-height: 800px;
-      height: 100%;
-      width: 100%;
+      min-height: 300px;
     }
     p {
       color: $color-primary;
@@ -65,7 +61,9 @@
 }
 }
 
-
+.lightbox__prev{
+  left: 2rem;
+}
 
 .lightbox__next {
   transform: rotate(180deg);
@@ -74,4 +72,8 @@
 .lightbox.close {
   display: none;
   opacity: 0;
+}
+
+.lightbox-media {
+  width: 100%;
 }

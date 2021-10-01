@@ -25,6 +25,7 @@ export class VideoMedia {
 
   displayLightbox() {
     return `
+    <button class="lightbox__close">Fermer</button>
     <button class="lightbox__prev">Précédent</button>
     <div class = "lightbox-media">
       <video controls="">
@@ -32,10 +33,7 @@ export class VideoMedia {
       </video>
       <p>${this.title}</p>
     </div>
-    <div class= "lightbox-btn">
-            <button class="lightbox__close">Fermer</button>
-            <button class="lightbox__next">Suivant</button>
-    </div>
+    <button class="lightbox__next">Suivant</button>
           `;
   }
 }

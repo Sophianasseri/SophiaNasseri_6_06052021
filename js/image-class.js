@@ -25,15 +25,13 @@ export class ImageMedia {
 
   displayLightbox() {
     return `
+    <button class="lightbox__close">Fermer</button>
     <button class="lightbox__prev">Précédent</button>
     <div class = "lightbox-media">
     <img src="./images/media/${this.image}" alt=""/>
     <p>${this.title}</p>
     </div>
-    <div class= "lightbox-btn">
-            <button class="lightbox__close">Fermer</button>
-            <button class="lightbox__next">Suivant</button>
-    </div>
+    <button class="lightbox__next">Suivant</button>
            `;
   }
 }

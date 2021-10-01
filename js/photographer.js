@@ -4,6 +4,7 @@ import {
 } from './functions.js';
 
 // Elements DOM
+const photogapherMedia = document.querySelector('.photographer-media');
 const mediaContainer = document.querySelector('.media-display');
 const toggle = document.querySelector('.dropdown__toggle');
 const menu = document.querySelector('.dropdown__menu');
@@ -95,6 +96,7 @@ option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
 
+//Lightbox
 mediaDisplay('Popularité').then(() => {
   const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
 
@@ -103,6 +105,7 @@ mediaDisplay('Popularité').then(() => {
   lightbox.appendChild(lightboxContainer);
 
   const close = () => {
+    photogapherMedia.style.display = ('block');
     lightbox.classList.add('close');
     document.removeEventListener('keyup', onKeyUp);
   };
@@ -146,6 +149,7 @@ mediaDisplay('Popularité').then(() => {
       const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
 
       e.preventDefault();
+      photogapherMedia.style.display = ('none');
       lightbox.classList.remove('close');
       createMedia(mediaId);
     });

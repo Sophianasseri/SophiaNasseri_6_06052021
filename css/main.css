@@ -262,10 +262,6 @@ input[type="submit"]:hover, input[type="submit"]:focus {
   border: red solid 3px !important;
 }
 
-.success {
-  border: green solid 3px !important;
-}
-
 small {
   font-style: oblique;
   font-size: 16px;
@@ -285,11 +281,14 @@ small {
 }
 
 .lightbox__prev, .lightbox__next {
+  top: 0;
+  right: 0;
+  height: 100%;
+  color: transparent;
   background: url(../../images/icones/chevron.svg) center center/32px 56px no-repeat;
   padding: 3rem;
   width: 50px;
   z-index: 11;
-  text-indent: -3000px;
   cursor: pointer;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -301,12 +300,12 @@ small {
 
 .lightbox__close {
   position: absolute;
-  top: 2.5rem;
-  right: 1rem;
+  color: transparent;
+  bottom: 750px;
+  right: 36px;
   width: 32px;
   height: 56px;
   background: url(../../images/icones/times.svg) center center/32px 56px no-repeat;
-  text-indent: -50000px;
   z-index: 12;
 }
 
@@ -321,26 +320,21 @@ small {
   height: 80vh;
 }
 
-.lightbox__container img {
-  margin: 0 10px;
-  max-width: 800px;
-  max-height: 800px;
-  height: 100%;
+.lightbox__container img, .lightbox__container video {
   width: 100%;
-}
-
-.lightbox__container video {
-  margin: 0 10px;
-  max-width: 800px;
+  min-width: 300px;
   max-height: 800px;
-  height: 100%;
-  width: 100%;
+  min-height: 300px;
 }
 
 .lightbox__container p {
   color: #901c1c;
   -ms-grid-column-align: left;
       justify-self: left;
+}
+
+.lightbox__prev {
+  left: 2rem;
 }
 
 .lightbox__next {
@@ -351,6 +345,10 @@ small {
 .lightbox.close {
   display: none;
   opacity: 0;
+}
+
+.lightbox-media {
+  width: 100%;
 }
 
 .lightbox, .lightbox__container, .photographer {
