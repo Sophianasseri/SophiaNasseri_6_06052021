@@ -5,7 +5,6 @@
   position: absolute;
   right: 20px;
   top: 37px;
-  margin-right: 100px;
   color: $color-primary;
   font-weight: normal;
   @include breakpoint-lg {
@@ -13,8 +12,7 @@
   }
   @include breakpoint-sm {
     font-size: 1rem;
-    margin-right: 10px;
-    top: 35px;
+    top: 43px;
   }
 }
 
@@ -30,6 +28,9 @@
   }
   @include breakpoint-md {
     grid-template-columns: 1fr;
+  }
+  @include breakpoint-sm {
+    margin-top: 50px;
   }
 }
 .photographer {

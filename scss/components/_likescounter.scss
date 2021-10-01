@@ -1,20 +1,23 @@
 .like-counter {
-    position: fixed;
-    bottom: 0;
-    right: 50px;
-    width: 250px;
-    padding: 0.8rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: $bg-secondary;
-    border-radius: 5px 5px 0 0;
+  position: sticky;
+  bottom: 0;
+  margin-left: auto;
+  width: 250px;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $bg-secondary;
+  border-radius: 5px 5px 0 0;
+  @include breakpoint-lg {
+    display: none;
+  }
 }
 
 .total-likes {
-    display: flex;
-    align-items: center;
-    &__number{
-        margin-right: 5px;
-    }
+  display: flex;
+  align-items: center;
+  &__number {
+    margin-right: 5px;
+  }
 }

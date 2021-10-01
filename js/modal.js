@@ -15,10 +15,11 @@ const createModal = async () => {
               name="contact"
               action="photographer.html"
               method="GET"
+              novalidate
             >
               <div class="modal-header">
                 <h1>Contactez-moi</h1>
-                <i id="close-modal" class="fas fa-times"></i>
+                <button type="button" id="close-modal">Close Contact</button>
               </div>
               <h2>${photographerData.name}</h2>
               <div class="form-data">
@@ -163,6 +164,7 @@ modaldisplay().then(() => {
       && messageValidation;
 
     if (formValidation) {
+      console.log(firstNameEl.value, lastNameEl.value, emailEl.value, messageEl.value);
       modal.style.display = 'none';
       modalBg.style.display = 'none';
       form.reset();
