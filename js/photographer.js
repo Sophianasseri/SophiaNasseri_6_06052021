@@ -65,6 +65,76 @@ const mediaDisplay = async (filter) => {
   });
 };
 
+const navigate = (medias, index, direction) => {
+  let newIndex = index;
+  if (direction === 'next') {
+    if (index === medias.length - 1) {
+      newIndex = 0;
+    } else {
+      newIndex += 1;
+    }
+  } else if (direction === 'prev') {
+    if (index === 0) {
+      newIndex = medias.length - 1;
+    } else {
+      newIndex -= 1;
+    }
+  }
+  return medias[newIndex];
+};
+
+const manageLightbox = () => {
+  const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
+
+  // Créer le container de la lightbox
+  lightboxContainer.classList.add('lightbox__container');
+  lightbox.appendChild(lightboxContainer);
+
+  const close = () => {
+    photogapherMedia.style.display = ('block');
+    lightbox.classList.add('close');
+    // eslint-disable-next-line no-use-before-define
+    document.removeEventListener('keyup', onKeyUp);
+  };
+  const onKeyUp = (e) => {
+    if (e.key === 'Escape') {
+      close();
+    }
+  };
+
+  const createMedia = (media) => {
+    lightboxContainer.innerHTML = '';
+    const mediaLightbox = factory(media);
+    if (media !== undefined) {
+      lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
+    }
+    const i = mediaData.findIndex((element) => element.id === media.id);
+
+    // Navigation dans la lightbox
+    lightbox.querySelector('.lightbox__close').addEventListener('click', close);
+    window.addEventListener('keyup', onKeyUp);
+    lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
+      const nextMedia = navigate(mediaData, i, 'next');
+      createMedia(nextMedia);
+    });
+    lightbox.querySelector('.lightbox__prev').addEventListener('click', () => {
+      const prevMedia = navigate(mediaData, i, 'prev');
+      createMedia(prevMedia);
+    });
+  };
+
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
+
+      e.preventDefault();
+      photogapherMedia.style.display = ('none');
+      lightbox.classList.remove('close');
+      createMedia(mediaId);
+    });
+  });
+};
+
 // Dropdown
 
 const toggler = (expand = null) => {
@@ -89,69 +159,17 @@ const setValue = (element) => {
   const toggleContent = toggle.textContent;
   toggle.textContent = elementContent;
   elt.textContent = toggleContent;
-  mediaDisplay(toggle.innerText);
+  // Afficher la lightbox au changement de filtre
+  mediaDisplay(toggle.innerText).then(() => {
+    manageLightbox();
+  });
   toggler(false);
 };
 option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
 
-//Lightbox
+// Afficher la lightbox au chargement de la page
 mediaDisplay('Popularité').then(() => {
-  const links = document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"');
-
-  // Créer le container de la lightbox
-  lightboxContainer.classList.add('lightbox__container');
-  lightbox.appendChild(lightboxContainer);
-
-  const close = () => {
-    photogapherMedia.style.display = ('block');
-    lightbox.classList.add('close');
-    document.removeEventListener('keyup', onKeyUp);
-  };
-  const onKeyUp = (e) => {
-    if (e.key === 'Escape') {
-      close();
-    }
-  };
-
-  const createMedia = (media) => {
-    lightboxContainer.innerHTML = '';
-    const mediaLightbox = factory(media);
-    if (media !== undefined) {
-      lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
-    }
-    let i = mediaData.findIndex((element) => element.id === media.id);
-
-    // Navigation dans la lightbox
-    lightbox.querySelector('.lightbox__close').addEventListener('click', close);
-    window.addEventListener('keyup', onKeyUp);
-    lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
-      if (i === mediaData.length - 1) {
-        i = 0;
-      } else {
-        i += 1;
-      }
-      createMedia(mediaData[i]);
-    });
-    lightbox.querySelector('.lightbox__prev').addEventListener('click', () => {
-      if (i === 0) {
-        i = mediaData.length - 1;
-      } else {
-        i -= 1;
-      }
-      createMedia(mediaData[i]);
-    });
-  };
-
-  links.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
-
-      e.preventDefault();
-      photogapherMedia.style.display = ('none');
-      lightbox.classList.remove('close');
-      createMedia(mediaId);
-    });
-  });
+  manageLightbox();
 });
