@@ -112,7 +112,16 @@ const manageLightbox = () => {
 
     // Navigation dans la lightbox
     lightbox.querySelector('.lightbox__close').addEventListener('click', close);
-    window.addEventListener('keyup', onKeyUp);
+    window.addEventListener('keyup', (e) => {
+      if (e.key === ('ArrowRight')) {
+        const nextMedia = navigate(mediaData, i, 'next');
+        createMedia(nextMedia);
+      } else if (e.key === ('ArrowLeft')) {
+        const prevMedia = navigate(mediaData, i, 'prev');
+        createMedia(prevMedia);
+      }
+      onKeyUp(e);
+    });
     lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
       const nextMedia = navigate(mediaData, i, 'next');
       createMedia(nextMedia);
