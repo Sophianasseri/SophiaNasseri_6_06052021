@@ -65,6 +65,22 @@ const mediaDisplay = async (filter) => {
   });
 };
 
+// Likes
+const totalOfLikesDisplay = async () => {
+  photographerData = await getPhotographerId();
+  const likesEl = Array.from(document.querySelectorAll('.media-likes__number')).map((like) => parseInt(like.innerText, 10));
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+  const totalOfLikes = likesEl.reduce(reducer);
+  document.querySelector('.like-counter').innerHTML = `
+      <div class="total-likes">
+      <p class="total-likes__number">${totalOfLikes}</p>
+      <i class="fas fa-heart"></i>
+    </div>
+    <p>${photographerData.price}€/jour</p>
+      `;
+};
+
+// Naviguer dans la lightbox
 const navigate = (medias, index, direction) => {
   let newIndex = index;
   if (direction === 'next') {
@@ -178,7 +194,8 @@ option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
 });
 
-// Afficher la lightbox au chargement de la page
 mediaDisplay('Popularité').then(() => {
+  // Afficher la lightbox au chargement de la page
   manageLightbox();
+  totalOfLikesDisplay();
 });
