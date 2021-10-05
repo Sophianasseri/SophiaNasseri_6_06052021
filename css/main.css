@@ -713,6 +713,10 @@ small {
   }
 }
 
+.media-likes__icon {
+  cursor: pointer;
+}
+
 .profile-image {
   -o-object-fit: cover;
      object-fit: cover;

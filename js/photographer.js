@@ -68,16 +68,39 @@ const mediaDisplay = async (filter) => {
 // Likes
 const totalOfLikesDisplay = async () => {
   photographerData = await getPhotographerId();
-  const likesEl = Array.from(document.querySelectorAll('.media-likes__number')).map((like) => parseInt(like.innerText, 10));
+  const likesContainer = document.querySelectorAll('.media-likes');
+  const values = Array.from(document.querySelectorAll('.media-likes__number')).map((like) => parseInt(like.innerText, 10));
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
-  const totalOfLikes = likesEl.reduce(reducer);
+  let totalOfLikes = values.reduce(reducer);
+
+  // Afficher dynamiquement le nombre total de likes et le prix/photographe
   document.querySelector('.like-counter').innerHTML = `
-      <div class="total-likes">
-      <p class="total-likes__number">${totalOfLikes}</p>
-      <i class="fas fa-heart"></i>
-    </div>
-    <p>${photographerData.price}€/jour</p>
-      `;
+  <div class="total-likes">
+  <p class="total-likes__number">${totalOfLikes}</p>
+  <i class="fas fa-heart"></i>
+  </div>
+  <p>${photographerData.price}€/jour</p>
+  `;
+  likesContainer.forEach((element) => {
+    element.addEventListener('click', () => {
+      const elt = element;
+      const like = elt.querySelector('.media-likes__number');
+      const totalContainer = document.querySelector('.total-likes__number');
+      let likeValue = parseInt(like.innerText, 10);
+
+      if (like.hasAttribute('active')) {
+        likeValue -= 1;
+        totalOfLikes -= 1;
+        like.removeAttribute('active');
+      } else {
+        likeValue += 1;
+        totalOfLikes += 1;
+        like.setAttribute('active', '');
+      }
+      like.innerHTML = likeValue;
+      totalContainer.innerHTML = totalOfLikes;
+    });
+  });
 };
 
 // Naviguer dans la lightbox
@@ -161,7 +184,6 @@ const manageLightbox = () => {
 };
 
 // Dropdown
-
 const toggler = (expand = null) => {
   const display = expand === null ? menu.getAttribute('aria-expanded') !== 'true' : expand;
 
