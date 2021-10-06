@@ -33,7 +33,7 @@ const photographerBannerDisplay = async () => {
         <p class="photographer-banner__tagline">${photographerData.tagline}</p>
       </div>
       <ul>
-        <li><a href="#" class="tags" data-tags=""></a>${tags.join('')}</li>
+        ${tags.join('')}
         <span></span>
       </ul>
     </div>
@@ -41,7 +41,31 @@ const photographerBannerDisplay = async () => {
     <img src="images/photographers/${photographerData.portrait}" class="profile-image" alt="">
  `;
 };
-photographerBannerDisplay();
+
+// Trier les médias par tag
+const tagFilterMedia = () => {
+  const tags = document.querySelectorAll('.tag');
+  tags.forEach((tag) => {
+    tag.addEventListener('click', (e) => {
+      const mediaEl = document.querySelectorAll('.media-element');
+      mediaEl.forEach((element) => {
+        const elt = element;
+        const mediaTag = elt.dataset.tag;
+        const containSelectedTag = mediaTag.includes(
+          e.target.dataset.tag,
+        );
+        if (containSelectedTag) {
+          elt.style.display = 'block';
+        } else {
+          elt.style.display = 'none';
+        }
+      });
+    });
+  });
+};
+photographerBannerDisplay().then(() => {
+  tagFilterMedia();
+});
 
 const mediaDisplay = async (filter) => {
   mediaData = await getMediasFromPhotographer(pageId);
@@ -66,12 +90,12 @@ const mediaDisplay = async (filter) => {
 };
 
 // Likes
-const totalOfLikesDisplay = async () => {
-  photographerData = await getPhotographerId();
+const likesDisplay = async () => {
   const likesContainer = document.querySelectorAll('.media-likes');
   const values = Array.from(document.querySelectorAll('.media-likes__number')).map((like) => parseInt(like.innerText, 10));
   const reducer = (previousValue, currentValue) => previousValue + currentValue;
   let totalOfLikes = values.reduce(reducer);
+  photographerData = await getPhotographerId();
 
   // Afficher dynamiquement le nombre total de likes et le prix/photographe
   document.querySelector('.like-counter').innerHTML = `
@@ -81,6 +105,7 @@ const totalOfLikesDisplay = async () => {
   </div>
   <p>${photographerData.price}€/jour</p>
   `;
+
   likesContainer.forEach((element) => {
     element.addEventListener('click', () => {
       const elt = element;
@@ -206,9 +231,11 @@ const setValue = (element) => {
   const toggleContent = toggle.textContent;
   toggle.textContent = elementContent;
   elt.textContent = toggleContent;
-  // Afficher la lightbox au changement de filtre
   mediaDisplay(toggle.innerText).then(() => {
+    // Afficher la lightbox au changement de filtre
     manageLightbox();
+    // Afficher les likes au changement de filtre
+    likesDisplay();
   });
   toggler(false);
 };
@@ -219,5 +246,6 @@ option.forEach((item) => {
 mediaDisplay('Popularité').then(() => {
   // Afficher la lightbox au chargement de la page
   manageLightbox();
-  totalOfLikesDisplay();
+  // Afficher les likes au chargemet de la page
+  likesDisplay();
 });

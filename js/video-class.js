@@ -5,11 +5,12 @@ export class VideoMedia {
     this.title = media.title;
     this.video = media.video;
     this.likes = media.likes;
+    this.tags = media.tags;
   }
 
   displayList() {
     return `
-          <div class="media-element">
+          <div class="media-element" data-tag="${this.tags}>
             <a data-id="${this.id}" href="./images/media/${this.video}">
               <video src="images/media/${this.video}" alt="" class="media-element__thumb"></video>
             </a>

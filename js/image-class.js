@@ -5,11 +5,12 @@ export class ImageMedia {
     this.title = media.title;
     this.image = media.image;
     this.likes = media.likes;
+    this.tags = media.tags;
   }
 
   displayList() {
     return `
-        <div class="media-element">
+        <div class="media-element" data-tag="${this.tags}">
           <a data-id="${this.id}" href="./images/media/${this.image}">
           <img src="images/media/${this.image}" alt="" class="media-element__thumb">
           </a>
