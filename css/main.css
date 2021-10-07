@@ -294,19 +294,34 @@ small {
   transition: 0.3s;
 }
 
+@media screen and (max-width: 600px) {
+  .lightbox__prev, .lightbox__next {
+    padding: 1rem;
+    background: url(../../images/icones/chevron.svg) center center/17px 30px no-repeat;
+    width: 15px;
+  }
+}
+
 .lightbox__prev:hover, .lightbox__prev:focus, .lightbox__next:hover, .lightbox__next:focus {
   opacity: 0.5;
 }
 
 .lightbox__close {
-  position: absolute;
+  position: fixed;
   color: transparent;
-  bottom: 750px;
+  top: 2vh;
   right: 36px;
   width: 32px;
   height: 56px;
   background: url(../../images/icones/times.svg) center center/32px 56px no-repeat;
   z-index: 12;
+}
+
+@media screen and (max-width: 600px) {
+  .lightbox__close {
+    background: url(../../images/icones/times.svg) center center/21px 30px no-repeat;
+    width: 20px;
+  }
 }
 
 .lightbox__close:hover, .lightbox__close:focus {
@@ -315,22 +330,33 @@ small {
 
 .lightbox__container {
   position: relative;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 0 50px;
   height: 80vh;
+}
+
+@media screen and (max-width: 768px) {
+  .lightbox__container {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .lightbox__container {
+    margin: 0 10px;
+  }
 }
 
 .lightbox__container img, .lightbox__container video {
   width: 100%;
-  min-width: 300px;
   max-height: 800px;
-  min-height: 300px;
 }
 
 .lightbox__container p {
   color: #901c1c;
   -ms-grid-column-align: left;
       justify-self: left;
+  font-size: 18px;
+  margin-top: 5px;
 }
 
 .lightbox__prev {

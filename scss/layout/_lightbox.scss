@@ -21,21 +21,32 @@
     z-index: 11;
     cursor: pointer;
     transition: 0.3s;
+     @include breakpoint-sm {
+       padding: 1rem;
+       background: url(../../images/icones/chevron.svg) center center / 17px 30px
+       no-repeat;
+       width: 15px;
+     }
     &:hover,
     &:focus {
       opacity: 0.5;
     }
   }
   &__close {
-    position: absolute;
+    position: fixed;
     color: transparent;
-    bottom: 750px;
+    top: 2vh;
     right: 36px;
     width: 32px;
     height: 56px;
     background: url(../../images/icones/times.svg) center center / 32px 56px
       no-repeat;
     z-index: 12;
+    @include breakpoint-sm {
+      background: url(../../images/icones/times.svg) center center / 21px 30px
+      no-repeat;
+      width: 20px;
+    }
     &:hover,
     &:focus {
       opacity: 0.5;
@@ -44,19 +55,24 @@
   &__container {
     @extend %flex-center;
     position: relative;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 0 50px;
     height: 80vh;
+    @include breakpoint-md{
+      margin: 0 30px;
+    }
+    @include breakpoint-sm {
+      margin: 0 10px;
+    }
     img, video {
       
       width: 100%;
-      min-width: 300px;
       max-height: 800px;
-      min-height: 300px;
     }
     p {
       color: $color-primary;
       justify-self: left;
+      font-size: 18px;
+      margin-top: 5px;
     }
 }
 }
