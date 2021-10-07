@@ -602,22 +602,26 @@ small {
 }
 
 .media-display {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1% 5%;
   width: 100%;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .media-display {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .media-display {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
   }
 }
 
@@ -634,15 +638,15 @@ small {
 
 .media-element__thumb {
   height: 300px;
-  width: 350px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 768px) {
   .media-element__thumb {
-    width: 420px;
+    height: 250px;
   }
 }
 
@@ -667,11 +671,14 @@ small {
   font-size: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .media-element__title {
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .media-element__title {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     margin-right: 20px;
     font-size: 15px;
   }
@@ -707,6 +714,12 @@ small {
   margin-right: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  .media-likes__number {
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .media-likes__number {
     font-size: 15px;
@@ -715,6 +728,12 @@ small {
 
 .media-likes__icon {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .media-likes__icon {
+    font-size: 13px;
+  }
 }
 
 .profile-image {
