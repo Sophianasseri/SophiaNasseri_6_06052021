@@ -1,7 +1,7 @@
 .like-counter {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  margin-left: auto;
+  right: 3vw;
   width: 250px;
   padding: 0.8rem;
   display: flex;
@@ -9,8 +9,13 @@
   align-items: center;
   background: $bg-secondary;
   border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 7px -6px 12px -4px rgba(0, 0, 0, 0.25);
+  box-shadow: 7px -6px 12px -4px rgba(0, 0, 0, 0.25);
   @include breakpoint-lg {
     display: none;
+  }
+  p {
+    font-size: 20px;
   }
 }
 
@@ -19,5 +24,6 @@
   align-items: center;
   &__number {
     margin-right: 5px;
+    font-size: 20px;
   }
 }

@@ -52,8 +52,8 @@
       width: 150px;
     }
     @include breakpoint-sm {
-      height: 100px;
-      width: 100px;
+      height: 90px;
+      width: 90px;
     }
   }
 }
@@ -96,17 +96,18 @@
 
 .media-element {
   margin: 20px 10px;
-  @include breakpoint-sm{
+  @include breakpoint-sm {
     width: 100%;
     margin: 20px 0;
-
   }
   &__thumb {
     height: 300px;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;
-    @include breakpoint-md{
+    -webkit-box-shadow: 0px 9px 12px -5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 9px 12px -5px rgba(0, 0, 0, 0.25);
+    @include breakpoint-md {
       height: 250px;
     }
     @include breakpoint-sm {
@@ -120,15 +121,13 @@
     color: $color-primary;
   }
   &__title {
-    
     font-size: 20px;
-    @include breakpoint-md{
+    @include breakpoint-md {
       font-size: 15px;
     }
     @include breakpoint-sm {
-     margin-right: 20px;
-     font-size: 15px;
-     
+      margin-right: 20px;
+      font-size: 15px;
     }
   }
 }
@@ -146,7 +145,8 @@
   &__number {
     font-size: 20px;
     margin-right: 5px;
-    @include breakpoint-md{
+   
+    @include breakpoint-md {
       font-size: 15px;
     }
     @include breakpoint-sm {
@@ -155,8 +155,9 @@
   }
   &__icon {
     cursor: pointer;
-    @include breakpoint-md{
+    @include breakpoint-md {
       font-size: 13px;
+      text-shadow: -1px 2px 2px rgba(0,0,0,0.25);
     }
   }
 }
