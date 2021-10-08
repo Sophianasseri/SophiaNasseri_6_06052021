@@ -10,7 +10,7 @@ export class VideoMedia {
 
   displayList() {
     return `
-          <div class="media-element" data-tag="${this.tags}>
+          <div class="media-element" data-tag="${this.tags}">
             <a data-id="${this.id}" href="./images/media/${this.video}">
               <video src="images/media/${this.video}" alt="" class="media-element__thumb"></video>
             </a>
