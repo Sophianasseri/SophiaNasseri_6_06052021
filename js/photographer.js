@@ -4,7 +4,7 @@ import {
 } from './functions.js';
 
 // Elements DOM
-const photogapherMedia = document.querySelector('.photographer-media');
+const photographerPageContainer = document.querySelector('#photographer-main-content');
 const mediaContainer = document.querySelector('.media-display');
 const toggle = document.querySelector('.dropdown__toggle');
 const menu = document.querySelector('.dropdown__menu');
@@ -155,7 +155,7 @@ const manageLightbox = () => {
   lightbox.appendChild(lightboxContainer);
 
   const close = () => {
-    photogapherMedia.style.display = ('block');
+    photographerPageContainer.style.display = ('block');
     lightbox.classList.add('close');
     // eslint-disable-next-line no-use-before-define
     document.removeEventListener('keyup', onKeyUp);
@@ -201,7 +201,7 @@ const manageLightbox = () => {
       const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
 
       e.preventDefault();
-      photogapherMedia.style.display = ('none');
+      photographerPageContainer.style.display = ('none');
       lightbox.classList.remove('close');
       createMedia(mediaId);
     });
