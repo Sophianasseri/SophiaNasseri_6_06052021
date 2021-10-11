@@ -5,6 +5,7 @@ import { getPhotographerId } from './functions.js';
 
 let photographerData = [];
 
+const photographerPageContainer = document.querySelector('#photographer-main-content');
 const modal = document.querySelector('.modal');
 
 const createModal = async () => {
@@ -23,25 +24,26 @@ const createModal = async () => {
               </div>
               <h2>${photographerData.name}</h2>
               <div class="form-data">
-                <label for="first">Prénom</label>
-                <input type="text" id="first" name="first" />
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" aria-labelledby="firstname" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label for="last">Nom</label>
-                <input type="text" id="last" name="last" />
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" aria-labelledby="lastname" />
                 <small></small>
               </div>
               <div class="form-data">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <input type="email" id="email" name="email" aria-labelledby="email" />
                 <small></small>
               </div>
               <div class="form-data">
                 <label for="message">Votre message</label>
                 <textarea
-                name="message"
-                id="message"
+                name="yourmessage"
+                id="yourmessage"
+                aria-labelledby="yourmessage"
                 cols="30"
                 rows="5"
                 ></textarea>
@@ -60,13 +62,26 @@ const modaldisplay = async () => {
   const closeBtn = document.querySelector('#close-modal');
   const modalBg = document.querySelector('.modal-background');
 
+  const closeModal = () => {
+    modal.style.display = 'none';
+    modalBg.style.display = 'none';
+    photographerPageContainer.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+
   modalBtn.addEventListener('click', () => {
     modal.style.display = 'block';
     modalBg.style.display = 'block';
+    photographerPageContainer.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+    closeBtn.focus();
   });
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalBg.style.display = 'none';
+  closeBtn.addEventListener('click', closeModal);
+
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
   });
 };
 
@@ -74,10 +89,10 @@ const modaldisplay = async () => {
 modaldisplay().then(() => {
   const modalBg = document.querySelector('.modal-background');
   const form = document.getElementById('contact');
-  const firstNameEl = document.getElementById('first');
-  const lastNameEl = document.getElementById('last');
+  const firstNameEl = document.getElementById('firstname');
+  const lastNameEl = document.getElementById('lastname');
   const emailEl = document.getElementById('email');
-  const messageEl = document.getElementById('message');
+  const messageEl = document.getElementById('yourmessage');
 
   const isrequired = (value) => (value !== '');
 
@@ -173,16 +188,16 @@ modaldisplay().then(() => {
 
   form.addEventListener('input', (e) => {
     switch (e.target.id) {
-      case 'first':
+      case 'firstname':
         checkFirstName();
         break;
-      case 'last':
+      case 'lastname':
         checkLastName();
         break;
       case 'email':
         checkEmail();
         break;
-      case 'message':
+      case 'yourmessage':
         checkMessage();
         break;
       default:

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,13 +28,13 @@
             <img
               class="logo"
               src="images/logo/fisheyelogo.svg"
-              alt="Page d'accueil Fisheye"
+              alt="Fisheye home page"
             />
           </a>
         </div>
       </header>
       <main>
-        <div id="photographer-main-content">
+        <div id="photographer-main-content" aria-hidden="false">
           <section class="photographer-banner"></section>
           <section class="photographer-media">
             <div class="media-filter">
@@ -55,12 +55,12 @@
             </div>
             <div class="media-display"></div>
           </section>
-          <div class="modal-background"></div>
-          <div class="modal"></div>
-          <div class="lightbox close"></div>
-          <div class="like-counter"></div>
         </div>
       </main>
+      <div class="modal-background"></div>
+      <div class="modal" role="dialog" aria-hidden="true"></div>
+      <div class="lightbox close"></div>
+      <div class="like-counter"></div>
     </div>
     <script type="module" src="./js/photographer.js"></script>
     <script type="module" src="./js/modal.js"></script>
