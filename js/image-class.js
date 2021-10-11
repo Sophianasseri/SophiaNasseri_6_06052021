@@ -6,13 +6,14 @@ export class ImageMedia {
     this.image = media.image;
     this.likes = media.likes;
     this.tags = media.tags;
+    this.alt = media.alt;
   }
 
   displayList() {
     return `
         <div class="media-element" data-tag="${this.tags}">
           <a data-id="${this.id}" href="./images/media/${this.image}">
-          <img src="images/media/${this.image}" alt="" class="media-element__thumb">
+          <img src="images/media/${this.image}" alt="${this.alt}" class="media-element__thumb">
           </a>
           <div class="media-element__info">
             <p class="media-element__title">${this.title}</p>
@@ -29,7 +30,7 @@ export class ImageMedia {
     <button class="lightbox__close">Fermer</button>
     <button class="lightbox__prev">Précédent</button>
     <div class = "lightbox-media">
-    <img src="./images/media/${this.image}" alt=""/>
+    <img src="./images/media/${this.image}" alt="${this.alt}"/>
     <p>${this.title}</p>
     </div>
     <button class="lightbox__next">Suivant</button>
