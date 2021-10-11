@@ -136,7 +136,8 @@
       "tags": ["art"],
       "likes": 24,
       "date": "2011-12-08",
-      "price": 100
+      "price": 100,
+      "alt": "Close up view of a wooden horse sculpture"
     },
     {
       "id": 7502053,
@@ -268,7 +269,8 @@
       "tags": ["animals"],
       "likes": 52,
       "date": "2016-06-12",
-      "price": 70
+      "price": 70,
+      "alt": "Puppy playing with leash in the sand"
     },
 
     {
@@ -279,7 +281,8 @@
       "tags": ["travel"],
       "likes": 23,
       "date": "2017-03-18",
-      "price": 45
+      "price": 45,
+      "alt": "Aerial view of mountains"
     },
     {
       "id": 343423425,
@@ -379,7 +382,7 @@
       "likes": 88,
       "date": "2019-02-03",
       "price": 45,
-      "alt:": "Distant view of person standing at the top of a hill "
+      "alt": "Distant view of person standing at the top of a hill "
     },
     {
       "id": 625025343,
@@ -466,7 +469,8 @@
       "tags": ["animals"],
       "likes": 142,
       "date": "2019-08-23",
-      "price": 60
+      "price": 60,
+      "alt": "Large group of horses walking in the mountains"
     },
     {
       "id": 95234343,
@@ -576,7 +580,8 @@
       "tags": ["architecture"],
       "likes": 57,
       "date": "2020-01-20",
-      "price": 65
+      "price": 65,
+      "alt": "Aerial view of multiple highways"
     },
     {
       "id": 3523523534,
@@ -598,7 +603,8 @@
       "tags": ["sports"],
       "likes": 150,
       "date": "2018-02-30",
-      "price": 70
+      "price": 70,
+      "alt": "Woman spinning around in the air"
     },
     {
       "id": 235234343,
