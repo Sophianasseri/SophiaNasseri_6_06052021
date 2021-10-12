@@ -21,7 +21,7 @@ const photographerBannerDisplay = async () => {
   const tags = [];
   for (let i = 0; i < photographerData.tags.length; i += 1) {
     tags.push(
-      `  <li><a href="#" class="tag" data-tag="${photographerData.tags[i]}">#${photographerData.tags[i]}</a></li>`,
+      `  <li><a aria-label="${photographerData.tags[i]}" href="#" class="tag" data-tag="${photographerData.tags[i]}">#${photographerData.tags[i]}</a></li>`,
     );
   }
 
