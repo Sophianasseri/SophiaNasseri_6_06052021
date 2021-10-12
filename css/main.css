@@ -160,6 +160,10 @@ body {
   }
 }
 
+header.hidden {
+  display: none;
+}
+
 .modal-background {
   width: 100%;
   height: 100%;
@@ -390,7 +394,7 @@ small {
           transform: rotate(180deg);
 }
 
-.lightbox.close {
+.lightbox.hidden {
   display: none;
   opacity: 0;
 }
@@ -804,6 +808,10 @@ small {
     font-size: 13px;
     text-shadow: -1px 2px 2px rgba(0, 0, 0, 0.25);
   }
+}
+
+#photographer-main-content.hidden {
+  display: none;
 }
 
 .profile-image {

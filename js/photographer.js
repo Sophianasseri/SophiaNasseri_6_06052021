@@ -4,6 +4,7 @@ import {
 } from './functions.js';
 
 // Elements DOM
+const header = document.querySelector('header');
 const photographerPageContainer = document.querySelector('#photographer-main-content');
 const mediaContainer = document.querySelector('.media-display');
 const toggle = document.querySelector('.dropdown__toggle');
@@ -155,8 +156,10 @@ const manageLightbox = () => {
   lightbox.appendChild(lightboxContainer);
 
   const close = () => {
-    photographerPageContainer.style.display = ('block');
-    lightbox.classList.add('close');
+    photographerPageContainer.classList.remove('hidden');
+    header.classList.remove('hidden');
+    lightbox.classList.add('hidden');
+    lightbox.setAttribute('aria-hidden', 'true');
     // eslint-disable-next-line no-use-before-define
     document.removeEventListener('keyup', onKeyUp);
   };
@@ -171,6 +174,7 @@ const manageLightbox = () => {
     const mediaLightbox = factory(media);
     if (media !== undefined) {
       lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
+      lightbox.querySelector('.lightbox__close').focus();
     }
     const i = mediaData.findIndex((element) => element.id === media.id);
 
@@ -201,8 +205,11 @@ const manageLightbox = () => {
       const mediaId = mediaData.find((elt) => elt.id === parseInt(e.currentTarget.dataset.id, 10));
 
       e.preventDefault();
-      photographerPageContainer.style.display = ('none');
-      lightbox.classList.remove('close');
+      photographerPageContainer.classList.add('hidden');
+      header.classList.add('hidden');
+      photographerPageContainer.setAttribute('aria-hidden', 'true');
+      lightbox.classList.remove('hidden');
+      lightbox.setAttribute('aria-hidden', 'false');
       createMedia(mediaId);
     });
   });
