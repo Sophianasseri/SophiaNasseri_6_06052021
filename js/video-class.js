@@ -17,9 +17,9 @@ export class VideoMedia {
             </a>
             <div class="media-element__info">
               <p class="media-element__title">${this.title}</p>
-              <div class ="media-likes">
+              <div tabindex="0" class ="media-likes">
                 <p class="media-likes__number">${this.likes}</p>
-                <i tabindex="0" class="fas fa-heart media-likes__icon" aria-label="likes"></i>
+                <i class="fas fa-heart media-likes__icon" aria-label="likes"></i>
               </div>
             </div>
           </div>`;

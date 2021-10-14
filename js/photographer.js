@@ -108,12 +108,11 @@ const likesDisplay = async () => {
   `;
 
   likesContainer.forEach((element) => {
-    element.addEventListener('click', () => {
-      const elt = element;
-      const like = elt.querySelector('.media-likes__number');
-      const totalContainer = document.querySelector('.total-likes__number');
-      let likeValue = parseInt(like.innerText, 10);
-
+    const elt = element;
+    const like = elt.querySelector('.media-likes__number');
+    const totalContainer = document.querySelector('.total-likes__number');
+    let likeValue = parseInt(like.innerText, 10);
+    const manageTotalOfLikes = () => {
       if (like.hasAttribute('active')) {
         likeValue -= 1;
         totalOfLikes -= 1;
@@ -125,7 +124,14 @@ const likesDisplay = async () => {
       }
       like.innerHTML = likeValue;
       totalContainer.innerHTML = totalOfLikes;
-    });
+    };
+    const likesKeyup = (e) => {
+      if (e.key === 'Enter') {
+        manageTotalOfLikes();
+      }
+    };
+    element.addEventListener('click', manageTotalOfLikes);
+    element.addEventListener('keydown', likesKeyup);
   });
 };
 
@@ -169,12 +175,17 @@ const manageLightbox = () => {
     }
   };
 
-  const createMedia = (media) => {
+  const createMedia = (media, focusElt) => {
     lightboxContainer.innerHTML = '';
     const mediaLightbox = factory(media);
     if (media !== undefined) {
       lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
-      lightbox.querySelector('.lightbox__close').focus();
+      // lightbox.querySelector('.lightbox__close').focus();
+      if (focusElt !== undefined) {
+        lightbox.querySelector(focusElt).focus();
+      } else {
+        lightbox.querySelector('.lightbox__close').focus();
+      }
     }
     const i = mediaData.findIndex((element) => element.id === media.id);
 
@@ -183,20 +194,20 @@ const manageLightbox = () => {
     window.addEventListener('keyup', (e) => {
       if (e.key === ('ArrowRight')) {
         const nextMedia = navigate(mediaData, i, 'next');
-        createMedia(nextMedia);
+        createMedia(nextMedia, '.lightbox__next');
       } else if (e.key === ('ArrowLeft')) {
         const prevMedia = navigate(mediaData, i, 'prev');
-        createMedia(prevMedia);
+        createMedia(prevMedia, '.lightbox__prev');
       }
       onKeyUp(e);
     });
     lightbox.querySelector('.lightbox__next').addEventListener('click', () => {
       const nextMedia = navigate(mediaData, i, 'next');
-      createMedia(nextMedia);
+      createMedia(nextMedia, '.lightbox__next');
     });
     lightbox.querySelector('.lightbox__prev').addEventListener('click', () => {
       const prevMedia = navigate(mediaData, i, 'prev');
-      createMedia(prevMedia);
+      createMedia(prevMedia, '.lightbox__prev');
     });
   };
 
@@ -228,9 +239,19 @@ const toggler = (expand = null) => {
   }
 };
 
+const toggleKeyDown = (e) => {
+  e.preventDefault();
+  if (e.keycode === 'Escape') {
+    toggler(false);
+  } else if (e.keycode === 23) {
+    toggler();
+  }
+};
+
 toggle.addEventListener('click', () => {
   toggler();
 });
+toggle.addEventListener('keyup ', toggleKeyDown);
 
 const setValue = (element) => {
   const elt = element;
