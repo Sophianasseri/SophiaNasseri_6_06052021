@@ -285,6 +285,11 @@ const setValue = (element) => {
 };
 option.forEach((item) => {
   item.addEventListener('click', () => setValue(item));
+  item.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      setValue(item);
+    }
+  });
 });
 
 mediaDisplay('Popularité').then(() => {
