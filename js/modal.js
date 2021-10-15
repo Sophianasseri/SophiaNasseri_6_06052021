@@ -24,22 +24,22 @@ const createModal = async () => {
               </div>
               <h2>${photographerData.name}</h2>
               <div class="form-data">
-                <label for="firstname">Prénom</label>
+                <label id="firstname" for="firstname">Prénom</label>
                 <input type="text" id="firstname" name="firstname" aria-labelledby="firstname" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label for="lastname">Nom</label>
+                <label id="lastname" for="lastname">Nom</label>
                 <input type="text" id="lastname" name="lastname" aria-labelledby="lastname" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label for="email">Email</label>
+                <label id="email for="email">Email</label>
                 <input type="email" id="email" name="email" aria-labelledby="email" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label for="message">Votre message</label>
+                <label id="yourmessage for="message">Votre message</label>
                 <textarea
                 name="yourmessage"
                 id="yourmessage"

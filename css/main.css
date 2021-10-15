@@ -862,6 +862,8 @@ small {
   width: 158px;
   padding: 12px 55px 12px 20px;
   border: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .dropdown__toggle::after {
@@ -872,6 +874,11 @@ small {
   top: calc(50% + 1px);
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+}
+
+.dropdown__toggle:focus {
+  color: #000;
+  background: #db8876;
 }
 
 .dropdown__menu {

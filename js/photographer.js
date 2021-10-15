@@ -238,20 +238,36 @@ const toggler = (expand = null) => {
     toggle.classList.remove('active');
   }
 };
-
+// Navigation au clavier sur le bouton du dropdown
 const toggleKeyDown = (e) => {
   e.preventDefault();
-  if (e.keycode === 'Escape') {
+  if (e.key === 'Escape') {
     toggler(false);
-  } else if (e.keycode === 23) {
-    toggler();
+  } else if (e.code === 'Space') {
+    toggler(true);
+  } else if (e.key === 'ArrowDown') {
+    menu.children[0].focus();
+  }
+};
+// Navigation clavier sur la liste éléments du dropdown
+const menuKeyDown = (e) => {
+  e.preventDefault();
+  if (e.key === 'Escape') {
+    toggler(false);
+  } else if (e.key === 'ArrowUp' && e.target.previousElementSibling) {
+    e.target.previousElementSibling.focus();
+  } else if (e.key === 'ArrowDown' && e.target.nextElementSibling) {
+    e.target.nextElementSibling.focus();
+  } else {
+    toggle.focus();
   }
 };
 
 toggle.addEventListener('click', () => {
   toggler();
 });
-toggle.addEventListener('keyup ', toggleKeyDown);
+toggle.addEventListener('keydown', toggleKeyDown);
+menu.addEventListener('keydown', menuKeyDown);
 
 const setValue = (element) => {
   const elt = element;
