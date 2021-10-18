@@ -24,25 +24,25 @@ const createModal = async () => {
               </div>
               <h2>${photographerData.name}</h2>
               <div class="form-data">
-                <label id="firstname" for="firstname">Prénom</label>
-                <input type="text" id="firstname" name="firstname" aria-labelledby="firstname" />
+                <label id="firstname" for="first">Prénom</label>
+                <input type="text" id="first" name="first" aria-labelledby="firstname" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label id="lastname" for="lastname">Nom</label>
-                <input type="text" id="lastname" name="lastname" aria-labelledby="lastname" />
+                <label id="lastname" for="last">Nom</label>
+                <input type="text" id="last" name="last" aria-labelledby="lastname" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label id="email for="email">Email</label>
-                <input type="email" id="email" name="email" aria-labelledby="email" />
+                <label id="youremail for="email">Email</label>
+                <input type="email" id="email" name="email" aria-labelledby="youremail" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label id="yourmessage for="message">Votre message</label>
+                <label id="message for="message">Votre message</label>
                 <textarea
-                name="yourmessage"
-                id="yourmessage"
+                name="message"
+                id="message"
                 aria-labelledby="yourmessage"
                 cols="30"
                 rows="5"
@@ -89,10 +89,10 @@ const modaldisplay = async () => {
 modaldisplay().then(() => {
   const modalBg = document.querySelector('.modal-background');
   const form = document.getElementById('contact');
-  const firstNameEl = document.getElementById('firstname');
-  const lastNameEl = document.getElementById('lastname');
+  const firstNameEl = document.getElementById('first');
+  const lastNameEl = document.getElementById('last');
   const emailEl = document.getElementById('email');
-  const messageEl = document.getElementById('yourmessage');
+  const messageEl = document.getElementById('message');
 
   const isrequired = (value) => (value !== '');
 
@@ -188,16 +188,16 @@ modaldisplay().then(() => {
 
   form.addEventListener('input', (e) => {
     switch (e.target.id) {
-      case 'firstname':
+      case 'first':
         checkFirstName();
         break;
-      case 'lastname':
+      case 'last':
         checkLastName();
         break;
       case 'email':
         checkEmail();
         break;
-      case 'yourmessage':
+      case 'message':
         checkMessage();
         break;
       default:
