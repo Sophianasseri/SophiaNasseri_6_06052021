@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 export class VideoMedia {
   constructor(media) {
+    this.photographer = media.photographerId;
     this.id = media.id;
     this.title = media.title;
     this.video = media.video;
@@ -12,8 +13,8 @@ export class VideoMedia {
   displayList() {
     return `
           <div class="media-element" data-tag="${this.tags}">
-            <a data-id="${this.id}" href="./images/media/${this.video}">
-              <video title="${this.alt}" src="images/media/${this.video}" class="media-element__thumb"></video>
+            <a data-id="${this.id}" href="./images/${this.photographer}/${this.video}">
+              <video title="${this.alt}" src="images/${this.photographer}/${this.video}" class="media-element__thumb"></video>
             </a>
             <div class="media-element__info">
               <p class="media-element__title">${this.title}</p>

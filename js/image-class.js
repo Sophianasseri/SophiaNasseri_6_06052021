@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 export class ImageMedia {
   constructor(media) {
+    this.photographer = media.photographerId;
     this.id = media.id;
     this.title = media.title;
     this.image = media.image;
@@ -12,8 +13,8 @@ export class ImageMedia {
   displayList() {
     return `
         <div class="media-element" data-tag="${this.tags}">
-          <a data-id="${this.id}" href="./images/media/${this.image}">
-          <img src="images/media/${this.image}" alt="${this.alt}" class="media-element__thumb">
+          <a data-id="${this.id}" href="./images/${this.photographer}/${this.image}">
+          <img src="images/${this.photographer}/${this.image}" alt="${this.alt}" class="media-element__thumb">
           </a>
           <div class="media-element__info">
             <p class="media-element__title">${this.title}</p>
@@ -33,7 +34,7 @@ export class ImageMedia {
     <img src="./images/media/${this.image}" alt="${this.alt}"/>
     <p>${this.title}</p>
     </div>
-    <button class="lightbox__next">Média suivant</button>
+    <button class="lightbox__next">Média</button>
            `;
   }
 }
