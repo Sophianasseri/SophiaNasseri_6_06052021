@@ -35,4 +35,7 @@ button {
 body {
   display: flex;
   justify-content: center;
+  &:focus{
+    outline: 3px solid $color-secondary;
+  }
 }

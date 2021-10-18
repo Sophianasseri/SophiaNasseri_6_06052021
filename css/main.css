@@ -48,6 +48,10 @@ body {
           justify-content: center;
 }
 
+body:focus {
+  outline: 3px solid #d3573c;
+}
+
 .tag {
   padding: 0.2rem;
   border: #c4c4c4 1px solid;
@@ -230,7 +234,7 @@ header.hidden {
 #close-modal {
   text-indent: -50000px;
   cursor: pointer;
-  background: url(../../images/icones/timeswhite.svg) center center/32px 56px no-repeat;
+  background: url(../../images/icone/timeswhite.svg) center center/32px 56px no-repeat;
   width: 32px;
   height: 56px;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -300,7 +304,7 @@ small {
 .lightbox__prev, .lightbox__next {
   height: 100%;
   color: transparent;
-  background: url(../../images/icones/chevron.svg) center center/32px 56px no-repeat;
+  background: url(../../images/icone/chevron.svg) center center/32px 56px no-repeat;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   -moz-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -315,7 +319,7 @@ small {
 @media screen and (max-width: 600px) {
   .lightbox__prev, .lightbox__next {
     padding: 1rem;
-    background: url(../../images/icones/chevron.svg) center center/17px 30px no-repeat;
+    background: url(../../images/icone/chevron.svg) center center/17px 30px no-repeat;
     width: 15px;
   }
 }
