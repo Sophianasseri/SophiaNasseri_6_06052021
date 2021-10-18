@@ -27,15 +27,15 @@ export class VideoMedia {
 
   displayLightbox() {
     return `
-    <button class="lightbox__close">Close dialog</button>
-    <button class="lightbox__prev">Previous image</button>
+    <button class="lightbox__close">Fermer la fenêtre</button>
+    <button class="lightbox__prev">Média précédent</button>
     <div class = "lightbox-media">
       <video title="${this.alt}" controls="">
           <source src="./images/media/${this.video}" type="video/mp4"/>
       </video>
       <p>${this.title}</p>
     </div>
-    <button class="lightbox__next">Next image</button>
+    <button class="lightbox__next">Média suivant</button>
           `;
   }
 }

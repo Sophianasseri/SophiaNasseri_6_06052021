@@ -27,13 +27,13 @@ export class ImageMedia {
 
   displayLightbox() {
     return `
-    <button class="lightbox__close">Close dialog</button>
-    <button class="lightbox__prev">Previous image</button>
+    <button class="lightbox__close">Fermer la fenêtre</button>
+    <button class="lightbox__prev">Média précédent</button>
     <div class = "lightbox-media">
     <img src="./images/media/${this.image}" alt="${this.alt}"/>
     <p>${this.title}</p>
     </div>
-    <button class="lightbox__next">Next image</button>
+    <button class="lightbox__next">Média suivant</button>
            `;
   }
 }

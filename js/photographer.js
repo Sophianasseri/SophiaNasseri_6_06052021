@@ -33,7 +33,7 @@ const photographerBannerDisplay = async () => {
         <p class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
         <p class="photographer-banner__tagline">${photographerData.tagline}</p>
       </div>
-      <ul>
+      <ul lang"en">
         ${tags.join('')}
         <span></span>
       </ul>

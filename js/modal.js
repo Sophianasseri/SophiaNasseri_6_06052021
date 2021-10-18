@@ -18,9 +18,9 @@ const createModal = async () => {
               method="GET"
               novalidate
             >
-              <div class="modal-header">
-                <h1>Contactez-moi</h1>
-                <button type="button" id="close-modal">Close Contact</button>
+              <div aria-labelledby="contactme" class="modal-header">
+                <h1 id="contactme">Contactez-moi</h1>
+                <button type="button" id="close-modal">Fermer la fenêtre de contact</button>
               </div>
               <h2>${photographerData.name}</h2>
               <div class="form-data">
@@ -34,12 +34,12 @@ const createModal = async () => {
                 <small></small>
               </div>
               <div class="form-data">
-                <label id="youremail for="email">Email</label>
+                <label id="youremail" for="email">Email</label>
                 <input type="email" id="email" name="email" aria-labelledby="youremail" />
                 <small></small>
               </div>
               <div class="form-data">
-                <label id="message for="message">Votre message</label>
+                <label id="yourmessage" for="message">Votre message</label>
                 <textarea
                 name="message"
                 id="message"
