@@ -870,6 +870,10 @@ small {
   transition: 0.3s;
 }
 
+.dropdown__toggle:focus {
+  outline: 3px solid #d3573c;
+}
+
 .dropdown__toggle::after {
   content: '\f078';
   font-family: 'Font Awesome 5 Free';

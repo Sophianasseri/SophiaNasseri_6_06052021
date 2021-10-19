@@ -34,7 +34,7 @@ const photographerBannerDisplay = async () => {
         <p class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
         <p class="photographer-banner__tagline">${photographerData.tagline}</p>
       </div>
-      <ul lang"en">
+      <ul lang="en">
         ${tags.join('')}
         <span></span>
       </ul>
@@ -243,12 +243,10 @@ const toggler = (expand = null) => {
 };
 // Navigation au clavier sur le bouton du dropdown
 const toggleKeyDown = (e) => {
-  e.preventDefault();
   if (e.key === 'Escape') {
     toggler(false);
-  } else if (e.code === 'Space') {
-    toggler(true);
   } else if (e.key === 'ArrowDown') {
+    e.preventDefault(e);
     menu.children[0].focus();
   }
 };
