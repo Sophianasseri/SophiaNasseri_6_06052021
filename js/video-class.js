@@ -32,7 +32,7 @@ export class VideoMedia {
     <button class="lightbox__prev">Média précédent</button>
     <div class = "lightbox-media">
       <video title="${this.alt}" controls="">
-          <source src="./images/media/${this.video}" type="video/mp4"/>
+          <source src="./images/${this.photographer}/${this.video}" type="video/mp4"/>
       </video>
       <p>${this.title}</p>
     </div>
