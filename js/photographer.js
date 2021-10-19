@@ -16,6 +16,7 @@ const lightboxContainer = document.createElement('div');
 let photographerData = [];
 let mediaData = [];
 
+// Afiicher en-tête photographe
 const photographerBannerDisplay = async () => {
   photographerData = await getPhotographerId();
   const tags = [];
@@ -135,7 +136,7 @@ const likesDisplay = async () => {
   });
 };
 
-// Naviguer dans la lightbox
+// Lightbox
 const navigate = (medias, index, direction) => {
   let newIndex = index;
   if (direction === 'next') {
@@ -180,7 +181,6 @@ const manageLightbox = () => {
     const mediaLightbox = factory(media);
     if (media !== undefined) {
       lightboxContainer.innerHTML += mediaLightbox.displayLightbox();
-      // lightbox.querySelector('.lightbox__close').focus();
       if (focusElt !== undefined) {
         lightbox.querySelector(focusElt).focus();
       } else {
@@ -234,6 +234,7 @@ const toggler = (expand = null) => {
 
   if (display) {
     toggle.classList.add('active');
+    menu.setAttribute('aria-activedescendant', 'option');
   } else {
     toggle.classList.remove('active');
   }

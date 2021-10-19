@@ -38,20 +38,27 @@
           <section class="photographer-banner"></section>
           <section class="photographer-media">
             <div class="media-filter">
-              <label id="orderby">Trier par</label>
+              <p id="orderby">Trier par</p>
               <div class="dropdown">
                 <button
                   tabindex="0"
                   class="dropdown__toggle btn"
                   type="button"
+                  role="button"
                   aria-haspopup="listbox"
-                  aria-labelledby="orderby"
+                  aria-labelledby="orderby orderbybtn"
+                  id="orderbybtn"
                 >
                   Popularité
                 </button>
-                <ul class="dropdown__menu" role="listbox" aria-expanded="false" aria-labelledby="orderby">
-                  <li role="listbox" id="orderby" tabindex="0">Date</li>
-                  <li role="listbox" id="orderby" tabindex="0">Titre</li>
+                <ul
+                  class="dropdown__menu"
+                  role="listbox"
+                  aria-expanded="false"
+                  aria-labelledby="orderby"
+                >
+                  <li role="option" tabindex="0">Date</li>
+                  <li role="option" tabindex="0">Titre</li>
                 </ul>
               </div>
             </div>
@@ -61,8 +68,18 @@
         </div>
       </main>
       <div class="modal-background"></div>
-      <div class="modal" role="dialog" aria-hidden="true" aria-haspopup="true"></div>
-      <div class="lightbox hidden" role="dialog" aria-label="Vue média" aria-hidden="true"></div>
+      <div
+        class="modal"
+        role="dialog"
+        aria-hidden="true"
+        aria-haspopup="true"
+      ></div>
+      <div
+        class="lightbox hidden"
+        role="dialog"
+        aria-label="Vue média"
+        aria-hidden="true"
+      ></div>
     </div>
     <script type="module" src="./js/photographer.js"></script>
     <script type="module" src="./js/modal.js"></script>
