@@ -6,6 +6,10 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+*:focus {
+  outline: 3px solid #d3573c;
+}
+
 a {
   text-decoration: none;
   color: #901c1c;
@@ -46,10 +50,6 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-body:focus {
-  outline: 3px solid #d3573c;
 }
 
 .tag {
@@ -878,11 +878,6 @@ small {
   top: calc(50% + 1px);
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-}
-
-.dropdown__toggle:focus {
-  color: #000;
-  background: #db8876;
 }
 
 .dropdown__menu {

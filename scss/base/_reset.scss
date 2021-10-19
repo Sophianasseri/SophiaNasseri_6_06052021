@@ -5,6 +5,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
+  &:focus{
+    outline: 3px solid $color-secondary;
+  }
 }
 
 a {
@@ -35,7 +38,5 @@ button {
 body {
   display: flex;
   justify-content: center;
-  &:focus{
-    outline: 3px solid $color-secondary;
-  }
+
 }
