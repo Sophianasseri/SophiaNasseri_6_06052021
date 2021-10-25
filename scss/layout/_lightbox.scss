@@ -12,7 +12,7 @@
   &__next {
     height: 100%;
     color: transparent;
-    background: url(../../images/icone/chevron.svg) center center / 32px 56px
+    background: url(../images/icone/chevron.svg) center center / 32px 56px
       no-repeat;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -24,7 +24,7 @@
     transition: 0.3s;
     @include breakpoint-sm {
       padding: 1rem;
-      background: url(../../images/icone/chevron.svg) center center / 17px 30px
+      background: url(../images/icone/chevron.svg) center center / 17px 30px
         no-repeat;
       width: 15px;
     }
@@ -40,14 +40,14 @@
     right: 36px;
     width: 32px;
     height: 56px;
-    background: url(../../images/icone/times.svg) center center / 32px 56px
+    background: url(../images/icone/times.svg) center center / 32px 56px
       no-repeat;
     z-index: 12;
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     -moz-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
     @include breakpoint-sm {
-      background: url(../../images/icone/times.svg) center center / 21px 30px
+      background: url(../images/icone/times.svg) center center / 21px 30px
         no-repeat;
       width: 20px;
     }
