@@ -7,15 +7,11 @@
     color: #fff;
     appearance: none;
     position: relative;
-    outline: none;
     cursor: pointer;
     width: 158px;
     padding: 12px 55px 12px 20px;
     border: 0;
     transition: 0.3s;
-    &:focus{
-      outline: 3px solid $color-secondary;
-    }
     &::after {
       content: '\f078';
       font-family: 'Font Awesome 5 Free';

@@ -6,7 +6,7 @@
   box-sizing: border-box;
   font-family: 'DM Sans', sans-serif;
   &:focus{
-    outline: 3px solid $color-secondary;
+    outline: 4px dotted #00B023;
   }
 }
 

@@ -2,6 +2,7 @@
 import {
   getMediasFromPhotographer, factory, getPhotographerId, pageId,
 } from './functions.js';
+import { createModal, manageModal } from './modal.js';
 
 // Elements DOM
 const header = document.querySelector('header');
@@ -22,7 +23,7 @@ const photographerBannerDisplay = async () => {
   const tags = [];
   for (let i = 0; i < photographerData.tags.length; i += 1) {
     tags.push(
-      `  <li><a aria-label="${photographerData.tags[i]}" href="#" class="tag" data-tag="${photographerData.tags[i]}">#${photographerData.tags[i]}</a></li>`,
+      `  <li><a  aria-label="${photographerData.tags[i]}" href="#" class="tag focus" data-tag="${photographerData.tags[i]}">#${photographerData.tags[i]}</a></li>`,
     );
   }
 
@@ -34,12 +35,12 @@ const photographerBannerDisplay = async () => {
         <p class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
         <p class="photographer-banner__tagline">${photographerData.tagline}</p>
       </div>
-      <ul lang="en">
+      <ul aria-label="Catégories médias" lang="en">
         ${tags.join('')}
         <span></span>
       </ul>
     </div>
-    <button class="modal-btn btn">Contactez-moi</button>
+    <button class="modal-btn btn focus">Contactez-moi</button>
     <img src="images/photographers/${photographerData.portrait}" class="profile-image" alt="">
  `;
 };
@@ -67,6 +68,7 @@ const tagFilterMedia = () => {
 };
 photographerBannerDisplay().then(() => {
   tagFilterMedia();
+  createModal().then(() => manageModal());
 });
 
 const mediaDisplay = async (filter) => {
@@ -103,11 +105,11 @@ const likesDisplay = async () => {
   document.querySelector('.like-counter').innerHTML = `
   <div class="total-likes">
   <p class="total-likes__number">${totalOfLikes}</p>
-  <i class="fas fa-heart"></i>
+  <i aria-label="j'aime" class="fas fa-heart"></i>
   </div>
   <p>${photographerData.price}€/jour</p>
   `;
-
+  // Gestion du total de likes
   likesContainer.forEach((element) => {
     const elt = element;
     const like = elt.querySelector('.media-likes__number');

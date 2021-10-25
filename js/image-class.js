@@ -13,14 +13,14 @@ export class ImageMedia {
   displayList() {
     return `
         <div class="media-element" data-tag="${this.tags}">
-          <a data-id="${this.id}" href="./images/${this.photographer}/${this.image}">
+          <a class="focus" data-id="${this.id}" href="./images/${this.photographer}/${this.image}">
           <img src="images/${this.photographer}/${this.image}" alt="${this.alt}" class="media-element__thumb">
           </a>
           <div class="media-element__info">
-            <p class="media-element__title">${this.title}</p>
-            <div tabindex="0" class ="media-likes">
+            <p class="media-element__title"><span lang="en">${this.title}</span></p>
+            <div tabindex="0" class ="media-likes focus">
                <p class="media-likes__number">${this.likes}</p>
-               <i class="fas fa-heart media-likes__icon" aria-label="likes"></i>
+               <i class="fas fa-heart media-likes__icon" aria-label="j'aime"></i>
             </div>
           </div>
         </div>`;

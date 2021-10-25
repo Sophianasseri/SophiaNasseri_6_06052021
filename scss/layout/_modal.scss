@@ -43,6 +43,7 @@
   align-items: center;
 }
 #close-modal {
+  align-self: flex-start;
   text-indent: -50000px;
   cursor: pointer;
   background: url(../../images/icone/timeswhite.svg) center center / 32px 56px
@@ -84,6 +85,15 @@ input[type='submit'] {
   }
 }
 
+input[type='text'],
+input[type='email'],
+textarea {
+  transform: scale(1);
+  transition: 0.3s;
+  &:focus {
+    transform: scale(1.05);
+  }
+}
 .error {
   border: red solid 3px !important;
 }

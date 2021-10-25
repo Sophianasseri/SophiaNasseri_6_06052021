@@ -7,7 +7,7 @@
 }
 
 *:focus {
-  outline: 3px solid #d3573c;
+  outline: 4px dotted #00B023;
 }
 
 a {
@@ -232,9 +232,11 @@ header.hidden {
 }
 
 #close-modal {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   text-indent: -50000px;
   cursor: pointer;
-  background: url(../images/icone/timeswhite.svg) center center/32px 56px no-repeat;
+  background: url(../../images/icone/timeswhite.svg) center center/32px 56px no-repeat;
   width: 32px;
   height: 56px;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -279,6 +281,22 @@ input[type='submit']:hover, input[type='submit']:focus {
   cursor: pointer;
 }
 
+input[type='text'],
+input[type='email'],
+textarea {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+textarea:focus {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
 .error {
   border: red solid 3px !important;
 }
@@ -304,7 +322,7 @@ small {
 .lightbox__prev, .lightbox__next {
   height: 100%;
   color: transparent;
-  background: url(../images/icone/chevron.svg) center center/32px 56px no-repeat;
+  background: url(../../images/icone/chevron.svg) center center/32px 56px no-repeat;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   -moz-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -319,7 +337,7 @@ small {
 @media screen and (max-width: 600px) {
   .lightbox__prev, .lightbox__next {
     padding: 1rem;
-    background: url(../images/icone/chevron.svg) center center/17px 30px no-repeat;
+    background: url(../../images/icone/chevron.svg) center center/17px 30px no-repeat;
     width: 15px;
   }
 }
@@ -335,7 +353,7 @@ small {
   right: 36px;
   width: 32px;
   height: 56px;
-  background: url(../images/icone/times.svg) center center/32px 56px no-repeat;
+  background: url(../../images/icone/times.svg) center center/32px 56px no-repeat;
   z-index: 12;
   filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
   -webkit-filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
@@ -344,7 +362,7 @@ small {
 
 @media screen and (max-width: 600px) {
   .lightbox__close {
-    background: url(../images/icone/times.svg) center center/21px 30px no-repeat;
+    background: url(../../images/icone/times.svg) center center/21px 30px no-repeat;
     width: 20px;
   }
 }
@@ -679,7 +697,7 @@ small {
 .media-display {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 1% 5%;
   width: 100%;
@@ -687,14 +705,14 @@ small {
 
 @media screen and (max-width: 1200px) {
   .media-display {
-    -ms-grid-columns: repeat(2, 1fr);
+    -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (max-width: 600px) {
   .media-display {
-    -ms-grid-columns: repeat(1, 1fr);
+    -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
     gap: 5px;
   }
@@ -861,17 +879,12 @@ small {
      -moz-appearance: none;
           appearance: none;
   position: relative;
-  outline: none;
   cursor: pointer;
   width: 158px;
   padding: 12px 55px 12px 20px;
   border: 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-}
-
-.dropdown__toggle:focus {
-  outline: 3px solid #d3573c;
 }
 
 .dropdown__toggle::after {

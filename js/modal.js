@@ -1,14 +1,14 @@
 /* eslint-disable import/extensions */
 import { getPhotographerId } from './functions.js';
 
-// Générer modale dynamiquement
-
-let photographerData = [];
-
+// Eléments DOM
 const photographerPageContainer = document.querySelector('#photographer-main-content');
 const modal = document.querySelector('.modal');
+const modalBg = document.querySelector('.modal-background');
 
-const createModal = async () => {
+let photographerData = [];
+// Générer la modale dynamiquement
+export const createModal = async () => {
   photographerData = await getPhotographerId();
   modal.innerHTML = `
            <form
@@ -18,11 +18,10 @@ const createModal = async () => {
               method="GET"
               novalidate
             >
-              <div aria-labelledby="contactme" class="modal-header">
-                <h1 id="contactme">Contactez-moi</h1>
+              <div class="modal-header">
+                <h1 id="modal">Contactez-moi <br> ${photographerData.name} </h1>
                 <button type="button" id="close-modal">Fermer la fenêtre de contact</button>
               </div>
-              <h2>${photographerData.name}</h2>
               <div class="form-data">
                 <label id="firstname" for="first">Prénom</label>
                 <input type="text" id="first" name="first" aria-labelledby="firstname" />
@@ -54,40 +53,24 @@ const createModal = async () => {
   `;
 };
 
-// Ouvrir et fermer la modale
+// Fermer et ouvrir la modale
 
-const modaldisplay = async () => {
-  await createModal();
-  const modalBtn = document.querySelector('.modal-btn');
-  const closeBtn = document.querySelector('#close-modal');
-  const modalBg = document.querySelector('.modal-background');
+const closeModal = () => {
+  modal.style.display = 'none';
+  modalBg.style.display = 'none';
+  photographerPageContainer.setAttribute('aria-hidden', 'false');
+  modal.setAttribute('aria-hidden', 'true');
+};
 
-  const closeModal = () => {
-    modal.style.display = 'none';
-    modalBg.style.display = 'none';
-    photographerPageContainer.setAttribute('aria-hidden', 'false');
-    modal.setAttribute('aria-hidden', 'true');
-  };
-
-  modalBtn.addEventListener('click', () => {
-    modal.style.display = 'block';
-    modalBg.style.display = 'block';
-    photographerPageContainer.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('aria-hidden', 'false');
-    closeBtn.focus();
-  });
-  closeBtn.addEventListener('click', closeModal);
-
-  window.addEventListener('keyup', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-    }
-  });
+const openModal = () => {
+  modal.style.display = 'block';
+  modalBg.style.display = 'block';
+  photographerPageContainer.setAttribute('aria-hidden', 'true');
+  modal.setAttribute('aria-hidden', 'false');
 };
 
 // Validation formulaire
-modaldisplay().then(() => {
-  const modalBg = document.querySelector('.modal-background');
+const validation = () => {
   const form = document.getElementById('contact');
   const firstNameEl = document.getElementById('first');
   const lastNameEl = document.getElementById('last');
@@ -203,4 +186,30 @@ modaldisplay().then(() => {
       default:
     }
   });
-});
+};
+
+export const manageModal = () => {
+  const modalBtn = document.querySelector('.modal-btn');
+  const closeBtn = document.querySelector('#close-modal');
+  const focusEl = document.querySelectorAll('.focus');
+  // Ouverture et fermeture de la modale
+  modalBtn.addEventListener('click', () => {
+    openModal();
+    focusEl.forEach((elt) => elt.setAttribute('tabindex', '-1'));
+    closeBtn.focus();
+  });
+  closeBtn.addEventListener('click', () => {
+    closeModal();
+    focusEl.forEach((elt) => elt.setAttribute('tabindex', '0'));
+    modalBtn.focus();
+  });
+  window.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      focusEl.forEach((elt) => elt.setAttribute('tabindex', '0'));
+      modalBtn.focus();
+    }
+  });
+
+  validation();
+};
