@@ -36,7 +36,6 @@ const photographerDisplay = async () => {
           </div>
           <ul lang="en">
             ${tags.join('')}
-            <span></span>
          </ul>
       </section>
 

@@ -20,6 +20,9 @@ let mediaData = [];
 // Afiicher en-tête photographe
 const photographerBannerDisplay = async () => {
   photographerData = await getPhotographerId();
+  // Titre de la page
+  document.title = `Profile: ${photographerData.name} - Fisheye`;
+
   const tags = [];
   for (let i = 0; i < photographerData.tags.length; i += 1) {
     tags.push(
@@ -37,7 +40,6 @@ const photographerBannerDisplay = async () => {
       </div>
       <ul aria-label="Catégories médias" lang="en">
         ${tags.join('')}
-        <span></span>
       </ul>
     </div>
     <button class="modal-btn btn focus">Contactez-moi</button>
