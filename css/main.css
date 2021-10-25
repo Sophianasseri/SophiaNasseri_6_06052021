@@ -188,8 +188,8 @@ header.hidden {
   position: fixed;
   top: 80px;
   left: 50%;
-  margin-left: -225px;
-  min-width: 450px;
+  margin-left: -250px;
+  min-width: 500px;
   border-radius: 5px;
   padding: 1rem 2rem 2.5rem 2rem;
   display: none;
@@ -202,7 +202,7 @@ header.hidden {
 @media screen and (max-width: 600px) {
   .modal {
     min-width: 320px;
-    margin-left: -160px;
+    margin-left: -174px;
   }
 }
 
