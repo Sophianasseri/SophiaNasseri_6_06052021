@@ -17,11 +17,11 @@ const lightboxContainer = document.createElement('div');
 let photographerData = [];
 let mediaData = [];
 
-// Afiicher en-tête photographe
+// Afficher en-tête photographe
 const photographerBannerDisplay = async () => {
   photographerData = await getPhotographerId();
   // Titre de la page
-  document.title = `Profile: ${photographerData.name} - Fisheye`;
+  document.title = `Profil: ${photographerData.name} - Fisheye`;
 
   const tags = [];
   for (let i = 0; i < photographerData.tags.length; i += 1) {
