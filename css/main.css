@@ -234,7 +234,7 @@ header.hidden {
 #close-modal {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  text-indent: -50000px;
+  color: transparent;
   cursor: pointer;
   background: url(../images/icone/timeswhite.svg) center center/32px 56px no-repeat;
   width: 32px;
