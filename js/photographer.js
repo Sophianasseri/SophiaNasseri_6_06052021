@@ -35,7 +35,7 @@ const photographerBannerDisplay = async () => {
     <div class="photographer-banner__description">
     <h1 class="photographer-banner__name profile-name">${photographerData.name}</h1>
       <div>
-        <p class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
+        <p lang="en" class="photographer-banner__location profile-location">${photographerData.city}, ${photographerData.country}</p>
         <p class="photographer-banner__tagline">${photographerData.tagline}</p>
       </div>
       <ul aria-label="Catégories médias" lang="en">
@@ -105,11 +105,11 @@ const likesDisplay = async () => {
 
   // Afficher dynamiquement le nombre total de likes et le prix/photographe
   document.querySelector('.like-counter').innerHTML = `
-  <div class="total-likes">
-  <p class="total-likes__number">${totalOfLikes}</p>
-  <i aria-label="j'aime" class="fas fa-heart"></i>
+  <div aria-label="${totalOfLikes}jaime" class="total-likes">
+  <p aria-hidden="true" class="total-likes__number">${totalOfLikes}</p>
+  <i class="fas fa-heart"></i>
   </div>
-  <p>${photographerData.price}€/jour</p>
+  <p aria-label="${photographerData.price}€ par jour"><span aria-hidden="true">${photographerData.price}€/jour</span></p>
   `;
   // Gestion du total de likes
   likesContainer.forEach((element) => {
@@ -128,7 +128,9 @@ const likesDisplay = async () => {
         like.setAttribute('active', '');
       }
       like.innerHTML = likeValue;
+      like.parentElement.setAttribute('aria-label', `${likeValue} jaimes`);
       totalContainer.innerHTML = totalOfLikes;
+      totalContainer.parentElement.setAttribute('aria-label', `${totalOfLikes} jaimes`);
     };
     const likesKeyup = (e) => {
       if (e.key === 'Enter') {

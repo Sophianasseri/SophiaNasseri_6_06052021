@@ -17,10 +17,10 @@ export class ImageMedia {
           <img src="images/${this.photographer}/${this.image}" alt="${this.alt}" class="media-element__thumb">
           </a>
           <div class="media-element__info">
-            <p class="media-element__title"><span lang="en">${this.title}</span></p>
-            <div tabindex="0" class ="media-likes focus">
-               <p class="media-likes__number">${this.likes}</p>
-               <i class="fas fa-heart media-likes__icon" aria-label="j'aime"></i>
+            <p lang="en" class="media-element__title">${this.title}</p>
+            <div role="button"  aria-label="${this.likes}jaimes" tabindex="0" class ="media-likes focus">
+               <p aria-hidden="true" class="media-likes__number">${this.likes}</p>
+               <i class="fas fa-heart media-likes__icon"></i>
             </div>
           </div>
         </div>`;

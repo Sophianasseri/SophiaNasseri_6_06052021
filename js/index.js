@@ -30,9 +30,9 @@ const photographerDisplay = async () => {
             <h2 class="photographer__name profile-name">${photographer.name}</h2>
           </a>
           <div class="photographer__description">
-            <p class="photographer__location profile-location" >${photographer.city}, ${photographer.country}</p>
+            <p lang="en" class="photographer__location profile-location" >${photographer.city}, ${photographer.country}</p>
             <p class="photographer__tagline">${photographer.tagline}</p>
-            <p class="photographer__price">${photographer.price}€/jour</p>
+            <p aria-label="${photographer.price} euros par jour" class="photographer__price"><span aria-hidden="true">${photographer.price}€/jour</span></p>
           </div>
           <ul lang="en">
             ${tags.join('')}

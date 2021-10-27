@@ -2,6 +2,7 @@
 import { getPhotographerId } from './functions.js';
 
 // Eléments DOM
+const header = document.querySelector('header');
 const photographerPageContainer = document.querySelector('#photographer-main-content');
 const modal = document.querySelector('.modal');
 const modalBg = document.querySelector('.modal-background');
@@ -18,24 +19,24 @@ export const createModal = async () => {
               method="GET"
               novalidate
             >
-              <div class="modal-header">
+              <div aria-live="assertive" class="modal-header">
                 <h1 id="modal">Contactez-moi <br> ${photographerData.name} </h1>
                 <button type="button" id="close-modal">Fermer la fenêtre de contact</button>
               </div>
               <div class="form-data">
                 <label id="firstname" for="first">Prénom</label>
                 <input type="text" id="first" name="first" aria-labelledby="firstname" />
-                <small></small>
+                <small role="alert"></small>
               </div>
               <div class="form-data">
                 <label id="lastname" for="last">Nom</label>
                 <input type="text" id="last" name="last" aria-labelledby="lastname" />
-                <small></small>
+                <small role="alert"></small>
               </div>
               <div class="form-data">
                 <label id="youremail" for="email">Email</label>
                 <input type="email" id="email" name="email" aria-labelledby="youremail" />
-                <small></small>
+                <small role="alert"></small>
               </div>
               <div class="form-data">
                 <label id="yourmessage" for="message">Votre message</label>
@@ -46,7 +47,7 @@ export const createModal = async () => {
                 cols="30"
                 rows="5"
                 ></textarea>
-                <small></small>
+                <small role="alert"></small>
               </div>
               <input type="submit" value="Envoyer" class="btn contact-btn" />
           </form>
@@ -59,6 +60,7 @@ const closeModal = () => {
   modal.style.display = 'none';
   modalBg.style.display = 'none';
   photographerPageContainer.setAttribute('aria-hidden', 'false');
+  header.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
 };
 
@@ -66,6 +68,7 @@ const openModal = () => {
   modal.style.display = 'block';
   modalBg.style.display = 'block';
   photographerPageContainer.setAttribute('aria-hidden', 'true');
+  header.setAttribute('aria-hidden', 'true');
   modal.setAttribute('aria-hidden', 'false');
 };
 
@@ -169,7 +172,20 @@ const validation = () => {
     }
   });
 
-  form.addEventListener('input', (e) => {
+  // Ajouter un délai pour l'apparition du le message d'erreur
+  const debounce = (fn, delay = 1000) => {
+    let timeoutId;
+    return (...args) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        fn(...args);
+      }, delay);
+    };
+  };
+
+  form.addEventListener('input', debounce((e) => {
     switch (e.target.id) {
       case 'first':
         checkFirstName();
@@ -185,14 +201,14 @@ const validation = () => {
         break;
       default:
     }
-  });
+  }));
 };
 
+// Gestion de l'ouverture et de la fermeture de la modale avec navigation au clavier
 export const manageModal = () => {
   const modalBtn = document.querySelector('.modal-btn');
   const closeBtn = document.querySelector('#close-modal');
   const focusEl = document.querySelectorAll('.focus');
-  // Ouverture et fermeture de la modale
   modalBtn.addEventListener('click', () => {
     openModal();
     focusEl.forEach((elt) => elt.setAttribute('tabindex', '-1'));
