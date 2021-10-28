@@ -4,6 +4,7 @@ import { getPhotographerId } from './functions.js';
 // Eléments DOM
 const header = document.querySelector('header');
 const photographerPageContainer = document.querySelector('#photographer-main-content');
+const pageCopntainer = document.querySelector('#page-container');
 const modal = document.querySelector('.modal');
 const modalBg = document.querySelector('.modal-background');
 
@@ -45,7 +46,7 @@ export const createModal = async () => {
                 id="message"
                 aria-labelledby="yourmessage"
                 cols="30"
-                rows="5"
+                rows="8"
                 ></textarea>
                 <small role="alert"></small>
               </div>
@@ -55,13 +56,19 @@ export const createModal = async () => {
 };
 
 // Fermer et ouvrir la modale
-
 const closeModal = () => {
   modal.style.display = 'none';
   modalBg.style.display = 'none';
   photographerPageContainer.setAttribute('aria-hidden', 'false');
   header.setAttribute('aria-hidden', 'false');
   modal.setAttribute('aria-hidden', 'true');
+
+  // Affichage responsive mobile
+  if (window.matchMedia('(max-width: 600px').matches) {
+    header.style.display = 'block';
+    photographerPageContainer.style.display = 'block';
+    pageCopntainer.style.margin = '0 10px';
+  }
 };
 
 const openModal = () => {
@@ -70,6 +77,12 @@ const openModal = () => {
   photographerPageContainer.setAttribute('aria-hidden', 'true');
   header.setAttribute('aria-hidden', 'true');
   modal.setAttribute('aria-hidden', 'false');
+  if (window.matchMedia('(max-width: 600px').matches) {
+    header.style.display = 'none';
+    photographerPageContainer.style.display = 'none';
+    modalBg.style.display = 'none';
+    pageCopntainer.style.margin = '0';
+  }
 };
 
 // Validation formulaire

@@ -14,10 +14,13 @@
   background: $bg-secondary;
   z-index: 20;
   position: fixed;
-  top: 80px;
+  top: 10vh;
+  height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
   left: 50%;
-  margin-left: -250px;
-  min-width: 500px;
+  margin-left: -275px;
+  min-width: 550px;
   border-radius: 5px;
   padding: 1rem 2rem 2.5rem 2rem;
   display: none;
@@ -25,15 +28,18 @@
   -webkit-box-shadow: 7px -6px 12px -4px rgba(0, 0, 0, 0.25);
   box-shadow: 7px -6px 12px -4px rgba(0, 0, 0, 0.25);
   @include breakpoint-sm {
+    width: 100%;
+    margin: 0;
+    position: static;
     min-width: 320px;
-    margin-left: -174px;
+    border-radius: 0;
+    height: 100vh;
   }
-  & h1,
-  & h2 {
+  & h1 {
     font-weight: normal;
     font-size: 40px;
     @include breakpoint-sm {
-      font-size: 30px;
+      font-size: 36px;
     }
   }
 }
@@ -46,7 +52,7 @@
   align-self: flex-start;
   color: transparent;
   cursor: pointer;
-  background: url(../images/icone/timeswhite.svg) center center / 32px 56px
+  background: url(../images/icone/timeswhite.svg) center center / 21px 56px
     no-repeat;
   width: 32px;
   height: 56px;
@@ -78,6 +84,11 @@ input[type='submit'] {
   font-weight: normal;
   font-size: 15px;
   padding: 1.2rem 2.5rem;
+  @include breakpoint-sm {
+    padding: 0.5rem 3.2rem;
+    display: flex;
+    margin: 50px auto 0 auto;
+  }
 
   &:hover,
   &:focus {
