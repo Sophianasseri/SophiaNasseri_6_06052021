@@ -20,7 +20,7 @@ export const createModal = async () => {
               method="GET"
               novalidate
             >
-              <div aria-live="assertive" class="modal-header">
+              <div aria-live="polite" class="modal-header">
                 <h1 id="modal">Contactez-moi <br> ${photographerData.name} </h1>
                 <button type="button" id="close-modal">Fermer la fenêtre de contact</button>
               </div>
@@ -182,6 +182,11 @@ const validation = () => {
       modal.style.display = 'none';
       modalBg.style.display = 'none';
       form.reset();
+      if (window.matchMedia('(max-width: 600px').matches) {
+        header.style.display = 'block';
+        photographerPageContainer.style.display = 'block';
+        pageCopntainer.style.margin = '0 10px';
+      }
     }
   });
 
