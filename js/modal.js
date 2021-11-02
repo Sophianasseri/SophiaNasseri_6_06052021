@@ -182,6 +182,11 @@ const validation = () => {
       modal.style.display = 'none';
       modalBg.style.display = 'none';
       form.reset();
+      if (window.matchMedia('(max-width: 600px').matches) {
+        header.style.display = 'block';
+        photographerPageContainer.style.display = 'block';
+        pageCopntainer.style.margin = '0 10px';
+      }
     }
   });
 
